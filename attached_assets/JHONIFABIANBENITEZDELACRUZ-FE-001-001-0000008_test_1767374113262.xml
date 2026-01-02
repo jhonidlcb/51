@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rDE xmlns="http://ekuatia.set.gov.py/sifen/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ekuatia.set.gov.py/sifen/xsd siRecepDE_v150.xsd">
+  <dVerFor>150</dVerFor>
+  <DE Id="01042200580001001000000812025102311249967113">
+    <dDVId>3</dDVId>
+    <dFecFirma>2025-10-23T17:06:07</dFecFirma>
+    <dSisFact>1</dSisFact>
+    <gOpeDE>
+      <iTipEmi>1</iTipEmi>
+      <dDesTipEmi>Normal</dDesTipEmi>
+      <dCodSeg>124996711</dCodSeg>
+      <dInfoEmi>Tipo de cambio: 1 USD = 7.100 PYG. Monto original: USD 31.25</dInfoEmi>
+    </gOpeDE>
+    <gTimb>
+      <iTiDE>1</iTiDE>
+      <dDesTiDE>Factura electrónica</dDesTiDE>
+      <dNumTim>04220058</dNumTim>
+      <dEst>001</dEst>
+      <dPunExp>001</dPunExp>
+      <dNumDoc>0000008</dNumDoc>
+      <dFeIniT>2025-10-13</dFeIniT>
+    </gTimb>
+    <gDatGralOpe>
+      <dFeEmiDE>2025-10-23T20:06:06</dFeEmiDE>
+      <gOpeCom>
+        <iTipTra>2</iTipTra>
+        <dDesTipTra>Prestación de servicios</dDesTipTra>
+        <iTImp>1</iTImp>
+        <dDesTImp>IVA</dDesTImp>
+        <cMoneOpe>PYG</cMoneOpe>
+        <dDesMoneOpe>Guarani</dDesMoneOpe>
+      </gOpeCom>
+      <gEmis>
+        <dRucEm>4220058</dRucEm>
+        <dDVEmi>0</dDVEmi>
+        <iTipCont>1</iTipCont>
+        <cTipReg>6</cTipReg>
+        <dNomEmi>DE generado en ambiente de prueba - sin valor comercial ni fiscal</dNomEmi>
+        <dNomFanEmi>SoftwarePar</dNomFanEmi>
+        <dDirEmi>Barrio Residencial – a tres cuadras de la Municipalidad</dDirEmi>
+        <dNumCas>0</dNumCas>
+        <cDepEmi>8</cDepEmi>
+        <dDesDepEmi>ITAPUA</dDesDepEmi>
+        <cDisEmi>107</cDisEmi>
+        <dDesDisEmi>CARLOS A. LOPEZ</dDesDisEmi>
+        <cCiuEmi>1456</cCiuEmi>
+        <dDesCiuEmi>CARLOS A. LOPEZ</dDesCiuEmi>
+        <dTelEmi>+595985990046</dTelEmi>
+        <dEmailE>softwarepar.lat@gmail.com</dEmailE>
+        <dDenSuc>Matriz</dDenSuc>
+        <gActEco>
+          <cActEco>62090</cActEco>
+          <dDesActEco> OTRAS ACTIVIDADES DE TECNOLOGÍA DE LA INFORMACIÓN Y SERVICIOS INFORMÁTICOS</dDesActEco>
+        </gActEco>
+        <gRespDE>
+          <iTipIDRespDE>1</iTipIDRespDE>
+          <dDTipIDRespDE>Cédula paraguaya</dDTipIDRespDE>
+          <dNumIDRespDE>12345678</dNumIDRespDE>
+          <dNomRespDE>SoftwarePar Admin</dNomRespDE>
+          <dCarRespDE>Administrador</dCarRespDE>
+        </gRespDE>
+      </gEmis>
+      <gDatRec>
+        <iNatRec>2</iNatRec>
+        <iTiOpe>2</iTiOpe>
+        <cPaisRec>PRY</cPaisRec>
+        <dDesPaisRe>Paraguay</dDesPaisRe>
+        <iTipIDRec>1</iTipIDRec>
+        <dDTipIDRec>Cédula paraguaya</dDTipIDRec>
+        <dNumIDRec>123456789</dNumIDRec>
+        <dNomRec>Jorjelink</dNomRec>
+        <dDirRec>Barrio Residencial – Carlos A. López – Itapúa</dDirRec>
+        <dNumCasRec>0</dNumCasRec>
+        <cDepRec>1</cDepRec>
+        <dDesDepRec>CAPITAL</dDesDepRec>
+        <cDisRec>1</cDisRec>
+        <dDesDisRec>ASUNCION (DISTRITO)</dDesDisRec>
+        <cCiuRec>1</cCiuRec>
+        <dDesCiuRec>ASUNCION (DISTRITO)</dDesCiuRec>
+        <dTelRec>+595985990044</dTelRec>
+        <dCelRec>+595985990044</dCelRec>
+        <dEmailRec>alfagroupstoreok@gmail.com</dEmailRec>
+        <dCodCliente>002</dCodCliente>
+      </gDatRec>
+    </gDatGralOpe>
+    <gDtipDE>
+      <gCamFE>
+        <iIndPres>2</iIndPres>
+        <dDesIndPres>Operación electrónica</dDesIndPres>
+      </gCamFE>
+      <gCamCond>
+        <iCondOpe>1</iCondOpe>
+        <dDCondOpe>Contado</dDCondOpe>
+        <gPaConEIni>
+          <iTiPago>9</iTiPago>
+          <dDesTiPag>Vale</dDesTiPag>
+          <dMonTiPag>221875.0000</dMonTiPag>
+          <cMoneTiPag>PYG</cMoneTiPag>
+          <dDMoneTiPag>Guarani</dDMoneTiPag>
+        </gPaConEIni>
+      </gCamCond>
+      <gCamItem>
+        <dCodInt/>
+        <dDesProSer>Entrega Final (Pago 4 de 4) - FrigoMgrande</dDesProSer>
+        <cUniMed>77</cUniMed>
+        <dDesUniMed>UNI</dDesUniMed>
+        <dCantProSer>1</dCantProSer>
+        <gValorItem>
+          <dPUniProSer>221875</dPUniProSer>
+          <dTotBruOpeItem>221875</dTotBruOpeItem>
+          <gValorRestaItem>
+            <dDescItem>0</dDescItem>
+            <dDescGloItem>0</dDescGloItem>
+            <dAntPreUniIt>0</dAntPreUniIt>
+            <dAntGloPreUniIt>0</dAntGloPreUniIt>
+            <dTotOpeItem>221875</dTotOpeItem>
+          </gValorRestaItem>
+        </gValorItem>
+        <gCamIVA>
+          <iAfecIVA>3</iAfecIVA>
+          <dDesAfecIVA>Exento</dDesAfecIVA>
+          <dPropIVA>0</dPropIVA>
+          <dTasaIVA>0</dTasaIVA>
+          <dBasGravIVA>0</dBasGravIVA>
+          <dLiqIVAItem>0</dLiqIVAItem>
+          <dBasExe>0</dBasExe>
+        </gCamIVA>
+      </gCamItem>
+    </gDtipDE>
+    <gTotSub>
+      <dSubExe>221875</dSubExe>
+      <dSubExo>0</dSubExo>
+      <dTotOpe>221875</dTotOpe>
+      <dTotDesc>0</dTotDesc>
+      <dTotDescGlotem>0</dTotDescGlotem>
+      <dTotAntItem>0</dTotAntItem>
+      <dTotAnt>0</dTotAnt>
+      <dPorcDescTotal>0</dPorcDescTotal>
+      <dDescTotal>0</dDescTotal>
+      <dAnticipo>0</dAnticipo>
+      <dRedon>0</dRedon>
+      <dTotGralOpe>221875</dTotGralOpe>
+    </gTotSub>
+  </DE>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+      <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+      <Reference URI="#01042200580001001000000812025102311249967113">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+          <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+        <DigestValue>5HS18XgbwuWR92JGpq4AB3z/hArPd45dsCEqvWN9w1Q=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>pzyvlUkJ77ttEyeprolrpAly2mxakSk8m/uY8X9B7F2x/tS6eBHmj9GJFAzxaJ2pozRMvMLCgBHk&#xD;
+0ynUrzbSx9mnmE984FvSRYYkEnLcrQooKsGI3PpNI2ijIW4K2Zzo55TtiaGe0vlTSUwAqaYd0xPV&#xD;
+KD/Y207K3+TEL8UsmZHpEq33TQ2dZXXtCKy6j8yGDVu1S4sGnG2wwnOdK+Ns2yl3yvqB/Gj3MiLb&#xD;
+tKwh/ceAcdV+RDbtKIAJXp7iJEdTX1Vls/cN1vgxvLRKyqDBss+v9Q5OaBBPrSp29mKJ3Y2FlLrj&#xD;
+q2LKlPfClh0u7hpNd6i2BmWaZ8btEp0aj7mg4Q==</SignatureValue>
+    <KeyInfo>
+      <X509Data>
+        <X509Certificate>MIIDbDCCAlSgAwIBAgIEYYrC+zANBgkqhkiG9w0BAQsFADB4MQswCQYDVQQGEwJQWTEUMBIGA1UE&#xD;
+CAwLQUxUTyBQQVJBTkExGDAWBgNVBAcMD0NJVURBRCBERUwgRVNURTEQMA4GA1UECgwHVElQUyBT&#xD;
+QTETMBEGA1UECwwKREVTQVJST0xMTzESMBAGA1UEAwwJRkFDVFVSQVBJMB4XDTIxMTEwOTE4NTAz&#xD;
+NVoXDTIyMTEwOTE4NTAzNVoweDELMAkGA1UEBhMCUFkxFDASBgNVBAgMC0FMVE8gUEFSQU5BMRgw&#xD;
+FgYDVQQHDA9DSVVEQUQgREVMIEVTVEUxEDAOBgNVBAoMB1RJUFMgU0ExEzARBgNVBAsMCkRFU0FS&#xD;
+Uk9MTE8xEjAQBgNVBAMMCUZBQ1RVUkFQSTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEB&#xD;
+AMWUwZD/I4iNtm2XVy0BGYBQJ0GGRRTzmdwSJGgCXMYPnLhPpQMMy6gdFsIpPW8fHCa1jhsVuRCp&#xD;
+jLbGGuqpBCLIVOHJxWb2mppJIa8fsTJBdgOz84vvqBWWMGmfb3HYx/s59GmsQIMnJ1vMW3x6LOjV&#xD;
+1m5HiXcJqgOh6fGlfex7EJ8QhB7CHJj5cbrQVj5e3rh7J2uXEeY8QBAG8+zaMKgGNxMmuirzhRWg&#xD;
+n+z9QN6pDh0RYjBO/uikgTccLpQdxlnYkK3i/eaKNdhrWEjBM/zrpH9FH7JqJNZgsk4kpZAS5g9M&#xD;
+HbfjLGE4BmskFYwFmhljJEeRiiFjVElVFsvlCT8CAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAZMTd&#xD;
+URV42xA4kOApodsNP5psahbiO0T5674fXbZUYt/k4qLszScQvTTrtZkAmbs1UIHu06W4QNffrBOj&#xD;
+SwbMuNX096BEiQ1SKTdWBBM41qkb0r7TL3aYchfXjJvTsp4l2pnXF0hJ+hiDwBp0sa/qEi+TP7mp&#xD;
+B8BbDtr2IbwyQVqyEgdmNfF/Fz81lwQV/N94H/31Mx2OW7b9ULiHHi6IAxf2HIjVLZYHat3Y4Wm5&#xD;
+bLbsKDubW0DsWuWXh3L1myGIFJqGEvoP4cwz+o/su5cPaLewBIzsKFQoZVJygQN1zv0W2Ve73nln&#xD;
+aIbxrFb8w/kXeZeYWeMYotIAZk9VhtheoQ==</X509Certificate>
+      </X509Data>
+    </KeyInfo>
+  </Signature>
+  <gCamFuFD>
+    <dCarQR>https://ekuatia.set.gov.py/consultas-test/qr?nVersion=150&amp;Id=01042200580001001000000812025102311249967113&amp;dFeEmiDE=323032352d31302d32335432303a30363a3036&amp;dNumIDRec=123456789&amp;dTotGralOpe=221875&amp;dTotIVA=0&amp;cItems=1&amp;DigestValue=35485331385867627775575239324a477071344142337a2f68417250643435647343457176574e397731513d&amp;IdCSC=1&amp;cHashQR=4dddfb9209bb7fdca254472486669cdae4914f84a1baebe4ba4ec11a9eb2a382</dCarQR>
+  </gCamFuFD>
+</rDE>

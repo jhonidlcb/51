@@ -1,0 +1,109 @@
+image
+Inicio Recursos
+ Soluciones
+ Blog
+Consola
+Buscar algo...
+betterdocs-category-icon
+1-Guía de inicio
+5
+betterdocs-category-icon
+2-Adapta tu Software
+2
+betterdocs-category-icon
+3-API de FacturaSend
+29
+betterdocs-category-icon
+4-Ambiente de Pruebas
+3
+Gestionar un Certificado Digital
+Solicitar habilitación como Facturador Electrónico
+Configuración Ambiente PRUEBAS en FacturaSend
+betterdocs-category-icon
+5-Ingresar a producción
+3
+betterdocs-category-icon
+Integración desde una base de datos
+11
+betterdocs-category-icon
+Errores frecuentes
+4
+betterdocs-category-icon
+Guías
+1
+Tabla de contenidos
+Proveedores de Certificados
+Certificado para ambiente PRUEBAS y PRODUCCIÓN
+Convenio con Proveedor de Certificado
+Documentación
+4-Ambiente de Pruebas
+Gestionar un Certificado Digital
+Gestionar un Certificado Digital
+
+Marcos Jara
+Updated on 21 de abril de 2025
+2 minutos de lectura
+
+Tabla de contenidos
+Proveedores de Certificados
+Certificado para ambiente PRUEBAS y PRODUCCIÓN
+Convenio con Proveedor de Certificado
+Proveedores de Certificados
+Para poder emitir documentos electrónicos en un ambiente conectado a SIFEN, sea ambiente de PRUEBAS o el ambiente de PRODUCCIÓN, el emisor necesitará un certificado digital válido emitido por uno de los proveedores habilitados por el Ministerio de Industria y Comercio.
+
+El certificado digital debe ser del Tipo F1 para la facturación electrónica.
+
+A continuación, en el siguiente link, obtendrá un listado de los proveedores habilitados:
+
+Listado de Prestadores de Servicios de Confianza
+
+El certificado digital tiene una validez de 1 (un) año y es necesario para poder firmar electrónicamente el archivo XML.
+
+Generalmente para el trámite es requerido la presencia del emisor o su representante en las oficinas del proveedor, o en las oficinas del emisor con la presencia del proveedor de certificado.
+
+Dependiendo del proveedor que usted seleccione, los documentos con que ya cuenta y del lugar donde usted resida, su trámite suele demorar entre 2 a 5 días.
+
+Certificado para ambiente PRUEBAS y PRODUCCIÓN
+El mismo certificado es utilizado para ambiente de PRUEBAS y PRODUCCIÓN, no es necesario gestionar uno por cada ambiente.
+
+El certificado digital se gestiona por emisor, si la es persona física sería por el número de documento de identidad policial (cédula de identidad), y si es una persona jurídica se gestiona por el número de RUC.
+
+El mismo certificado es valido para todos los puntos y establecimientos así como para todos los tipos de documentos electrónicos, siempre y cuando sea para el mismo emisor con el mismo RUC o Cédula.
+
+Convenio con Proveedor de Certificado
+Hasta el momento TIPS S.A. tiene convenio con uno de los proveedores de certificados del listado, con quien puede contactar directamente, para la obtención del certificado de forma más directa, agilizando la gestión y a un menor costo.
+
+Para solicitar el certificado con CODE 100, puede contactar con éste número:
+
+Celular: +595 974 188021 (Jacqueline Vargas)
+
+No olvide mencionar expresamente que es un emisor que utilizará el software FacturaSend de la Empresa TIPS S.A.
+
+Te sirvió la documentación?
+   
+   
+ 
+Comparte este artículo:
+Facebook
+X
+LinkedIn
+¿Sigues con problemas? ¿Cómo podemos ayudar?
+Updated on 21 de abril de 2025
+Configuración Ambiente PRUEBAS en FacturaSend
+ 
+logo
+FacturaSend es una Plataforma Paraguaya que facilita la generación de los Documentos Electrónicos exigidos por el SIFEN gracias a su fácil integración con sistemas nacionales e internacionales utilizados en el mercado.
+
+tips@tips.com.py
+
+Nosotros
+TIPS S.A.
+Partner's & Aliados
+Producto
+API Docs
+Recursos
+Brochure PDF Empresas
+Brochure PDF Integradores
+Copyright © 2021 - FacturaSend. Todos los derechos Reservados.
+
+  

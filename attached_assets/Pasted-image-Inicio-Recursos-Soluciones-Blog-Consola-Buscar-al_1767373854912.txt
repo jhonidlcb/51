@@ -1,0 +1,208 @@
+image
+Inicio Recursos
+ Soluciones
+ Blog
+Consola
+Buscar algo...
+betterdocs-category-icon
+1-Guía de inicio
+5
+betterdocs-category-icon
+2-Adapta tu Software
+2
+Requisitos de Cambios
+Tablas y Definiciones
+betterdocs-category-icon
+3-API de FacturaSend
+29
+betterdocs-category-icon
+4-Ambiente de Pruebas
+3
+betterdocs-category-icon
+5-Ingresar a producción
+3
+betterdocs-category-icon
+Integración desde una base de datos
+11
+betterdocs-category-icon
+Errores frecuentes
+4
+betterdocs-category-icon
+Guías
+1
+Documentación
+2-Adapta tu Software
+Requisitos de Cambios
+Requisitos de Cambios
+
+Marcos Jara
+Updated on 16 de diciembre de 2025
+5 minutos de lectura
+
+Tabla de contenidos
+Requisitos de Cambios
+Parametrización
+Cambio en Clientes
+Cambio en Usuarios
+Cambio en Ciudades
+Cambio en Paises
+Cambio en Monedas
+Cambio en Unidades de Medida
+Sobre el Número de Documento
+Datos a persistir
+Iniciando la Integración
+Requisitos de Cambios
+Los cambios en tu Sistema ERP o POS son mínimos y no son propios de FacturaSend, sino más bien requisitos del propio SIFEN.
+
+Es decir, si va implementar la Facturación Electrónica usted mismo, igual tendrá que realizar éstos cambios.
+
+Se requieren realizar algunos cambios en:
+
+Las opciones de parametrización.
+Clientes
+Usuarios
+Ciudades
+Paises
+Monedas
+Ciudades
+Paises
+Productos
+Unidades de Medida
+Parametrización
+En la zona de parámetros u opciones del Sistema, agregar los siguientes campos:
+
+URL de la API de FacturaSend (String): Ej. “https://api.facturasend.com.py/tenantId” o “http://172.10.254.15/api/tenantId”
+API Key (String): Ej. “9FFC28EB-5376 – 4392 – B757 – 86E372FBB398”
+Check de Comunicación Sincrona (boolean): (Falso por defecto). Un check para indicar si la comunicación se hará de forma síncrona
+Es importante tener una sección en su aplicación para poder cambiar de forma dinámica éstos parámetros, para que las pruebas puedan realizarse de manera más sencilla.
+
+Cambio en Clientes
+Deben realizarse las siguientes modificaciones, en el caso de que aún no los posea:
+
+Agregar campo “Nombre de Fantasía”. Un campo tipo texto abierto. Este campo es opcional para SIFEN, por el momento se puede enviar vacío.
+
+Agregar campo “Es Proveedor del Estado”, con valores verdadero o falso.
+
+Agregar campo “Ciudad”. Un “Combobox” que esté relacionado con el código de la ciudad de SIFEN y que a su vez contenga relación con su distrito y departamento. Ver apartado Ciudad
+
+Adaptar el campo “Tipo de Documento” o sincronizar/compatibilizar si ya se posee uno. A SIFEN debe enviarse uno de éstos posibles:
+
+1. Cédula paraguaya
+2. Pasaporte
+3. Cédula extranjera
+4. Carnet de residencia
+5. Innominado
+6. Tarjeta Diplomática de exoneración fiscal
+9. Otro
+Agregar un campo “Numero de Casa”, Campo Numérico, se puede colocar por defecto a todos el valor “0”
+
+Agregar un campo “Nacionalidad” o “País” que almacene la relación con la tabla de países. Ver apartado Paises
+
+Agregar “Tipo de Operación”, Un “Combobox” con los siguientes valores y descripción
+
+B2B
+B2C
+B2G
+B2F
+La creación de éste campo puede saltarse si se desea, ya que su valor puede ser calculados en el momento de su envío, por ejemplo:
+
+Si el Cliente tiene tipo de documento igual a RUC, y es una persona jurídica, entonces este valor puede enviarse como B2B (Business to Business)
+Si el Cliente tiene tipo de documento igual a RUC y es una persona física, entonces este valor puede enviarse como B2C (Business to Consumer)
+Si Tipo de Documento es CI, entonces se envía como B2C (Business to Consumer)
+Si el RUC pertenece a un proveedor del estado se envía B2G (Business to Goverment) y;
+Si su tipo de documento Extranjero, entonces B2F (Business to Foreign)
+Cambio en Usuarios
+Agregar campo “Cargo”. Un campo tipo texto abierto.
+
+Cambio en Ciudades
+La tabla Ciudades debe tener una estructura anidada con más dos tablas, distritos y departamentos
+
+Debe estar organizado de la siguiente manera:
+
+Tabla 1 – Departamentos
+Tabla 1.1 – Distritos, referenciando a departamentos
+Tabla 1.1.1 – Ciudades, referenciando a distritos
+De forma que el Departamento es el que engloba al Distrito, y el Distrito a la Ciudad
+
+Los datos se pueden importar desde esta Fuente.
+
+Cambio en Paises
+Los países del sistema deben estar conforme el estándar ISO 3166. Si aún no se posee la tabla países dentro del Sistema se debe crear uno conforme éste estándar, cargando con los valores iniciales que serán enviados a FacturaSend.
+
+Caso el sistema ya cuente con una tabla países en una estructura y codificación propia, entonces se deberá sincronizar los códigos internacionales con los países que se poseen, pues para el SIFEN se exigen los códigos internacionales de tres dígitos, ej. PRI, BRA, ARS, etc.
+
+Para el envío a FacturaSend, es sólo necesario enviar el código del país.
+
+Tabla de Referencia.
+
+Cambio en Monedas
+Las monedas del Sistema deben estar codificadas conforme el estándar 4217. Se aplica la misma regla de países para sincronizar los datos del Sistema con éste estándar.
+
+Para el envío a FacturaSend, es sólo necesario enviar el código de la moneda.
+
+Tabla de referencia.
+
+Cambio en Unidades de Medida
+Los códigos de las unidades de medida del Sistema deben unificarse con el de la SET.
+
+Tabla de referencia
+
+Tabla de Referencia.
+
+Sobre el Número de Documento
+Las generación y secuencia de las numeraciones de cada Tipo de Documento Electrónico debe ser gestionada dentro del ERP, aunque las duplicación de éstos se valida en FacturaSend, antes de enviar a la SET.
+
+Para ello debe llevar un control del punto, sucursal y número de documento, ej.: 001-001-0000001
+
+Datos a persistir
+La emisión de un documento electrónico genera un ID único e irrepetible entre los emisores que es reconocido por el SIFEN. Este código se llama “Código de Control” o CDC y está compuesto de 44 dígitos alfanumerícos.
+
+Es muy recomendable que guarde éste número para futuras referencias, reimpresiones de documentos y ejecución de eventos, por ejemplo el de Cancelación.
+
+También es importante que guarde en su sistema, junto con el CDC, el estado del Documento. Este estado será 0-Generado cuando usted crea el documento, pero luego puede cambiar a 2-Aprobado o 4-Rechazado.
+
+A continuación los demás estados disponibles:
+
+-1 = Borrador
+0 = Generado DE
+1 = Enviado en un Lote
+2 = Aprobado
+3 = Aprobado con observacion
+4 = Rechazado
+98 = Inexistente
+99 = Cancelado.
+Iniciando la Integración
+La integración se realiza mediante llamadas a la API de FacturaSend.
+
+Debes tener a mano, la API Key generada desde la consola de FacturaSend y también la URL de la API, la cual se muestra en la misma pestaña
+
+Para detalles específicos cómo estructurar el JSON visite la Referencia de la API de FacturaSend.
+
+Te sirvió la documentación?
+   
+   
+ 
+Comparte este artículo:
+Facebook
+X
+LinkedIn
+¿Sigues con problemas? ¿Cómo podemos ayudar?
+Updated on 16 de diciembre de 2025
+Tablas y Definiciones
+ 
+logo
+FacturaSend es una Plataforma Paraguaya que facilita la generación de los Documentos Electrónicos exigidos por el SIFEN gracias a su fácil integración con sistemas nacionales e internacionales utilizados en el mercado.
+
+tips@tips.com.py
+
+Nosotros
+TIPS S.A.
+Partner's & Aliados
+Producto
+API Docs
+Recursos
+Brochure PDF Empresas
+Brochure PDF Integradores
+Copyright © 2021 - FacturaSend. Todos los derechos Reservados.
+
+  

@@ -1,0 +1,34 @@
+Necesito que hagas un analicis progfundo de todo el sistema para que te familiacires completamente como si lo hubieras desarrollado tu mismo
+y verifica que el sistema este conectado a la db psql 'postgresql://neondb_owner:npg_f1jQRacpFG3V@ep-red-shape-ac6qnrhr-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
+
+y no a una db distinta y lo soluciones, en la parte de secret ya configure los datos 
+si ahi que alterar algo en la db no lo ejecutes tu sino que me pases el scrips sql para ejecutarlo yo manualmente en la db desde mi terminal
+
+los datos que agregue en secrets son:
+
+DATABASE_URL
+postgresql://neondb_owner:npg_f1jQRacpFG3V@ep-red-shape-ac6qnrhr-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+GMAIL_USER
+softwarepar.noreply@gmail.com
+FACTURASEND_API_KEY
+8148E8FF-E894-4F61-87A7-F86EFB0A149D
+GMAIL_PASS
+jatgscjmjcftcqqd
+VITE_RECAPTCHA_SITE_KEY
+6Lc1Iu0rAAAAAPhdyALmKS5vPpTl5IwLjBuSKF3O
+RECAPTCHA_SECRET_KEY
+6Lc1Iu0rAAAAAJRyHPH1N3Srv72K27bTFNaF12ZP
+
+verifica que todo esten correcto y funcional cadas credenciles del secrets sino hazmelo saber.
+
+podrias crear una factura de prueba y verificar que la conecion con facturasend esta correcta en nuestra factura en pdf para el cliente debe de aparecer la info devuelta por facturasend asi como muestro en la imagen opsea el cdc qr etc
+datos por si es requerido 
+
+Información
+Estos son algunas direcciones para invocar a los servicios de la API
+- Url fija de la API: https://api.facturasend.com.py/jhonifabianbenitezdelacruz_7451
+- Probar si la API responde: [GET] - https://api.facturasend.com.py/jhonifabianbenitezdelacruz_7451/test 
+- Url Crear un documento electrónico: [POST] - https://api.facturasend.com.py/jhonifabianbenitezdelacruz_7451/lote/create 
+ha las prueba hazo usando el cliente alfagroupstoreok@gmail.com
+
+la factura de prueba que creaste definitivamente genero el codigo devueto por facturasend pero el que genero el sistema cuando se aprueba un pago no, alli te muestro ambos el que generaste vos de prueba y el que aprobe yo desde el admin y fijate que sale en ingles algun texto corrije eso tambien

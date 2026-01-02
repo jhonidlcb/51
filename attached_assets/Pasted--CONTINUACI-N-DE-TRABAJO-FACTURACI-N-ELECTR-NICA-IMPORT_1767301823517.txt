@@ -1,0 +1,140 @@
+🔴 CONTINUACIÓN DE TRABAJO – FACTURACIÓN ELECTRÓNICA (IMPORTANTE)
+📌 Problema actual (NO resuelto)
+
+Aunque indicaste que la integración con FacturaSend está hecha, la factura que se genera automáticamente cuando el admin aprueba un pago NO incluye la información oficial devuelta por FacturaSend, específicamente:
+
+❌ No aparece el CDC
+
+❌ No aparece el QR
+
+❌ No aparece el link oficial de verificación SET
+
+❌ El PDF que el cliente descarga en /client/billing no es una representación gráfica válida del documento electrónico (XML)
+
+👉 La imagen que te pasé muestra EXACTAMENTE lo que debe aparecer en la factura del cliente:
+
+Texto:
+
+“Consulte la validez de este Documento Electrónico con el número de CDC impreso”
+
+Link:
+
+https://ekuatia.set.gov.py/consultas
+
+
+CDC completo
+
+QR generado por FacturaSend
+
+Leyenda:
+
+“ESTE DOCUMENTO ES UNA REPRESENTACIÓN GRÁFICA DE UN DOCUMENTO ELECTRÓNICO (XML)”
+
+Eso NO está saliendo en la factura real del cliente.
+
+🧠 Análisis obligatorio que debés hacer
+
+Necesitás hacer un análisis exhaustivo del flujo REAL, no de la factura de prueba manual:
+
+1️⃣ Revisar el flujo correcto
+
+Aprobación de pago desde admin
+
+Llamada real a FacturaSend
+
+Guardado en DB de la respuesta (CDC, QR, link SET, XML si aplica)
+
+Generación del PDF que descarga el cliente en /client/billing
+
+⚠️ Todo indica que:
+
+La factura de prueba usa FacturaSend
+
+Pero el flujo de aprobación de pago NO está usando esos datos
+
+O el PDF del cliente no los está leyendo desde la DB
+
+🗄️ Base de datos (obligatorio)
+
+Verificar que el sistema esté conectado únicamente a esta DB:
+
+postgresql://neondb_owner:npg_f1jQRacpFG3V@ep-red-shape-ac6qnrhr-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+
+
+No usar otra DB
+
+No mocks
+
+No SQLite
+
+👉 Si faltan columnas (cdc, qr, link_set, facturasend_response, etc.):
+
+❌ NO las ejecutes vos
+
+✅ Pasame los scripts SQL para ejecutarlos manualmente
+
+📄 Requisito OBLIGATORIO del PDF
+
+La factura que descarga el cliente debe:
+
+Mostrar CDC exactamente como lo devuelve FacturaSend
+
+Mostrar QR oficial
+
+Mostrar link a SET (ekuatia)
+
+Mostrar textos legales en español
+
+Ser una representación gráfica del XML
+
+Usar el logo que te pasé, no el anterior
+
+🧪 Prueba final obligatoria antes de entregar
+
+Antes de decir que está listo, debés:
+
+Generar una factura real para:
+
+alfagroupstoreok@gmail.com
+
+
+Aprobar el pago desde el admin
+
+Verificar que:
+
+Se llamó a FacturaSend
+
+Se guardó la respuesta
+
+El cliente, en /client/billing, descarga un PDF que:
+
+Tiene CDC
+
+Tiene QR
+
+Tiene link SET
+
+Coincide con lo devuelto por FacturaSend
+
+Entregar un resumen de:
+
+Archivos modificados
+
+Qué estaba mal
+
+Cómo quedó solucionado
+
+🔐 Secrets (solo verificar uso)
+
+Los secrets ya están cargados. Solo verificá que realmente se usen en runtime, especialmente:
+
+DATABASE_URL
+
+FACTURASEND_API_KEY
+
+✅ El trabajo SOLO se considera terminado cuando
+
+✔ Al aprobar un pago desde admin
+✔ El cliente descarga la factura desde /client/billing
+✔ El PDF contiene CDC, QR y link SET
+✔ La factura es verificable en la web del gobierno

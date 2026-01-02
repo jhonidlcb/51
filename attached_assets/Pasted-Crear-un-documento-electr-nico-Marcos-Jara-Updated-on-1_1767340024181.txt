@@ -1,0 +1,236 @@
+Crear un documento electrónico
+
+Marcos Jara
+Updated on 17 de junio de 2025
+5 minutos de lectura
+
+Tabla de contenidos
+Endpoint (URL)
+Header (Encabezado)
+Parámetros (BODY)
+Parámetros (Query Param)
+Ejemplo de llamadas
+Respuesta de la Petición
+Recomendaciones
+Validaciones
+Esta invocación, crea uno o varios documentos electrónicos (hasta un máximo de 50 del mismo tipo) y los envía a la SIFEN utilizando el proceso por lotes o asíncrono.
+
+Se denomina proceso asíncrono, cuando no hay una respuesta inmediata de aprobación o rechazo desde la SIFEN sobre los documentos enviados. La aprobación o rechazo del documento enviado, debe consultarse mediante otro proceso.
+
+En éste caso el documento queda en FacturaSend con el Estado 0-Generado.
+
+Todos los documentos electrónicos enviados utilizando ésta petición pueden ser visualizados en la opción de Lotes, desde la consola de FacturaSend.
+
+Endpoint (URL)
+POST https://api.facturasend.com.py/<tenantId>/lote/create
+
+Header (Encabezado)
+Requiere el envío del los siguientes atributos en el encabezado
+
+Campo	Valor
+Authorization	Bearer api_key_reemplazar_api_key
+Content-Type	application/json; charset=utf-8
+Parámetros (BODY)
+Los parámetros para crear el Documento Electrónico se envían en el cuerpo de la petición (BODY) en formato JSON.
+
+Para detalles de la estructura completa de atributos JSON que puede ser enviado como parámetro consulte la documentación Estructura JSON de un DE
+
+Parámetros (Query Param)
+También se pueden especificar algunos parámetros de consulta (Query Param) junto con la URL:
+
+Parámetro	Requerido	Descripción
+draft	No	Especifique true para generar el documento electrónico en borrador. Un DE en borrador no se envia a la SET hasta que se cofnirma. Su valor por defecto es false.
+xml	No	Especifique true para obtener en el resultado el/los XML/s generado/s en la operación. Su valor por defecto es false.
+qr	No	Especifique true para obtener en el resultado el/los QR/s generado/s en la operación. Su valor por defecto es false.
+tax	No	Especifique true para obtener en el resultado el valor total de los impuestos Iva 5 e Iva 10 del XML. Su valor por defecto es false.
+Por ejemplo, la petición puede ser realizada de ésta manera:
+
+POST https://api.facturasend.com.py/<tenantId>/lote/create?draft=true&xml=true&qr=true&tax=true.
+
+Vea las secciones correspondientes para Confirmar o Rechazar un borrador.
+
+Tenga en cuenta que a diferencia del método síncrono, aquí se envía un array de objetos, por lo cual se debe empezar el JSON con corchetes [ ] aunque solo vaya a enviar 1 (un) documento. El límite de documentos es de hasta 50 del mismo, por ejemplo 50 facturas electrónicas.
+
+Ejemplo de llamadas
+shell
+javascript
+import axios from 'axios';
+const data = [{
+  "tipoDocumento" : 1,
+  "establecimiento" : 1,
+  "punto" : "001",
+  "numero" : 5, 
+  "descripcion" : "Aparece en el documento",
+  "observacion" : "Cualquier informacion de marketing, publicidad, promociones, sorteos, etc. para el receptor",
+  "fecha" : "2021-10-19T10:11:00",
+  "tipoEmision" : 1,
+  "tipoTransaccion" : 1,
+  "tipoImpuesto" : 1,
+  "moneda" : "PYG",
+  "cliente" : {
+      "contribuyente" : true,
+      "ruc" : "2005001-1",
+      "razonSocial" : "Marcos Adrian Jara Rodriguez",
+      "nombreFantasia" : "Marcos Adrian Jara Rodriguez",
+      "tipoOperacion" : 1,
+      "direccion" : "Avda Calle Segunda y Proyectada",
+      "numeroCasa" : "1515",
+      "departamento" : 11,
+      "departamentoDescripcion" : "ALTO PARANA",
+      "distrito" : 143,
+      "distritoDescripcion" : "DOMINGO MARTINEZ DE IRALA",
+      "ciudad" : 3344,
+      "ciudadDescripcion" : "PASO ITA (INDIGENA)",
+      "pais" : "PRY",
+      "paisDescripcion" : "Paraguay",
+      "tipoContribuyente" : 1,
+      "documentoTipo" : 1,
+      "documentoNumero" : "2324234",
+      "telefono" : "061229382",
+      "celular" : "0983123765",
+      "email" : "cliente@empresa.com, cliente@personal.com",
+      "codigo" : "1548"
+  },
+  "usuario" : {
+      "documentoTipo" : 1,
+      "documentoNumero" : "157264",
+      "nombre" : "Marcos Jara",
+      "cargo" : "Vendedor"
+  },
+  "factura" : {
+      "presencia" : 1
+  },
+  "condicion" : {
+      "tipo" : 1,
+      "entregas" : [{ 
+          "tipo" : 1,
+          "monto" : "150000",
+          "moneda" : "PYG",
+          "monedaDescripcion" : "Guarani",
+          "cambio" : 0.0
+      }, { 
+          "tipo" : 3,
+          "monto" : "150000",
+          "moneda" : "PYG",
+          "monedaDescripcion" : "Guarani",
+          "cambio" : 0.0,
+          "infoTarjeta" : {
+              "numero" : 1234,
+              "tipo" : 1,
+              "tipoDescripcion" : "Dinelco",
+              "titular" : "Marcos Jara",
+              "ruc" : "69695654-1",
+              "razonSocial" : "Bancard",
+              "medioPago" : 1,
+              "codigoAutorizacion" : 232524234
+          }
+      }, { 
+          "tipo" : 2,
+          "monto" : "150000",
+          "moneda" : "PYG",
+          "monedaDescripcion" : "Guarani",
+          "cambio" : 0.0,
+          "infoCheque" : {
+              "numeroCheque": "32323232",
+              "banco" : "Sudameris"
+          }
+      }],
+      "credito" : {
+          "tipo" : 1,
+          "plazo" : "30 días",
+          "cuotas" : 2,
+          "montoEntrega" : 1500000.00,
+          "infoCuotas" : [{
+              "moneda" : "PYG",
+              "monto" : 800000.00,
+              "vencimiento" : "2021-10-30"
+          }, {
+              "moneda" : "PYG",
+              "monto" : 800000.00,
+              "vencimiento" : "2021-11-30"
+          }]
+      }
+  },
+  "items" : [{
+      "codigo" : "A-001",
+      "descripcion": "Producto o Servicio", 
+      "observacion": "Información adicional o complementaria sobre el producto", 
+      "ncm": "123456",
+      "unidadMedida": 77,
+      "cantidad": 10.5,
+      "precioUnitario": 10800,
+      "cambio": 0.0,
+      "ivaTipo" : 1,
+      "ivaBase" : 100,
+      "iva" : 5,
+      "lote" : "A-001",
+      "vencimiento" : "2022-10-30",
+      "numeroSerie" : "",
+      "numeroPedido" : "",
+      "numeroSeguimiento" : ""
+  }]
+}];
+const headers = {
+  `Authorization` : `Bearer api_key_<hdiweuw-92jwwle...>`
+};
+axios.post(`https://api.facturasend.com.py/<tenantId>/lote/create`, 
+  data, 
+  {headers})
+.then( respuesta => {
+  console.log(respuesta);
+});
+Respuesta de la Petición
+La respuesta de la petición será la siguiente:
+
+{ 
+  "success" : true,
+  "result" : {
+    "deList" : [{
+      "cdc": "01800695631001002100694612021112410311184194",
+      "numero": "001-001-0000001",
+      "xml": "Si se pasa el queryParam xml",
+      "qr": "Si se pasa el queryParam qr",
+      "dIVA5": "Si se pasa el queryParam tax",
+      "dIVA10": "Si se pasa el queryParam tax",
+      "fechaEmision": "",
+      "fechaFirma": ""
+    }],
+    "loteId" : 22
+  },
+}
+La respuesta de éste Servicio:
+
+Atributos	Tipo	Description
+success	boolean	true si no hubo errores en la transacción
+error	string	El mensaje de Error, en el caso de que el success = false.
+errores	array	Aquí se mostrarán una lista de errores, indicando el error, y el número de índice del archivo XML con Error.
+deList	array	El array con la respuesta de cada DE procesado.
+
+Los atributos de éste array se describen en Respuesta deList
+loteId	number	El número de lote generado para la solicitud.
+A continuación se detalla el contenido del objeto deList.
+
+Atributos	Tipo	Description
+cdc	string	Id único de 44 dígitos generado para el Documento Electrónico
+numero	string	Número de Documento Electrónico generado en formato 001-001-0000001
+estado	string	Estado del Documento Electrónico. Por lo general se obtiene el estado 0-Generado
+xml
+(opcional)	string	El archivo XML generado del documento electronico.
+Este elemento solamente se retorna cuando se le pasa el valor true en el atributo xml como queryParam al crear el DE o el LOTE, ej:
+https://api.facturasend.com.py/<tenantId>/de/create?xml=true
+qr
+(opcional)	string	El valor del código QR generado del documento electronico.
+Este elemento solamente se retorna cuando se le pasa el valor true en el atributo qr como queryParam al crear el DE o el LOTE, ej:
+https://api.facturasend.com.py/<tenantId>/de/create?qr=true
+dIVA5
+dIVA10
+(opcional)	number	El valor del impuesto IVA 5 e IVA 10 del documento electronico.
+Este elemento solamente se retorna cuando se le pasa el valor true en el atributo tax como queryParam al crear el DE o el LOTE, ej:
+https://api.facturasend.com.py/<tenantId>/de/create?tax=true
+fechaEmision	string	Fecha del Servidor de emisión del documento.
+fechaFirma	string	Fecha real del Servidor en el cual se firmó el documento.
+Recomendaciones
+El implementador debe utilizar el método asíncrono desde su sistema, ya que es el único método permitido por SIFEN en producción.
+Validaciones
+Todos los documentos que se envían utilizando éste método, deben ser del mismo tipo, por ejemplo todos ellos factura electrónica.
+Puede enviar como mínimo 1 documento y como máximo 50 por llamada, si tienen más debe realizarlo en una siguiente llamada.

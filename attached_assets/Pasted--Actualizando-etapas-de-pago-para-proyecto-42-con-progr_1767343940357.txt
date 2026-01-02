@@ -1,0 +1,278 @@
+🔄 Actualizando etapas de pago para proyecto 42 con progreso 50%
+📊 Etapas encontradas: 4
+✅ Activando 1 etapa(s) de pago
+💰 Etapa "Pre-entrega - 90% Completado" ahora disponible para pago
+📧 Enviando email a: alfagroupstoreok@gmail.com, Asunto: 💰 Nueva Etapa de Pago Disponible: Barbershop - Pre-entrega - 90% Completado
+📧 Email enviado exitosamente a: alfagroupstoreok@gmail.com
+📧 Email de nueva etapa disponible enviado a: alfagroupstoreok@gmail.com para "Pre-entrega - 90% Completado"
+🔔 Notificación in-app enviada al cliente 2
+✅ Etapas de pago actualizadas para proyecto 42 con progreso 50%
+8:50:34 AM [express] PUT /api/projects/42/timeline/195 200 in 4231ms :: {"id":195,"projectId":42,"ti…
+8:50:35 AM [express] GET /api/public/company-info 304 in 135ms :: {"companyName":"SOFTWAREPAR","titu…
+8:50:35 AM [express] GET /api/portfolio 304 in 135ms :: [{"id":7,"title":"BaberShop","description":"…
+8:50:35 AM [express] GET /api/hero-slides 304 in 404ms :: [{"id":1,"title":"SoftwarePar: Tu Partner …
+8:50:35 AM [express] GET /api/work-modalities 304 in 404ms :: [{"id":6,"title":"Lanzamiento Web","su…
+8:50:35 AM [express] GET /api/projects/42/timeline 200 in 270ms :: [{"id":193,"projectId":42,"title"…
+8:50:36 AM [express] GET /api/admin/projects 200 in 271ms :: [{"id":42,"name":"Barbershop","descript…
+8:50:36 AM [express] GET /api/admin/projects/stats 304 in 554ms :: {"pending":"0","inProgress":"0","…
+🔐 Login attempt for: alfagroupstoreok@gmail.com
+🔐 reCAPTCHA verified - Score: 0.9, Success: true
+✅ reCAPTCHA verified for: alfagroupstoreok@gmail.com
+👤 User found: { email: 'alfagroupstoreok@gmail.com', role: 'client', isActive: true }
+✅ Password valid for: alfagroupstoreok@gmail.com
+✅ Login successful for: alfagroupstoreok@gmail.com - Role: client
+8:50:47 AM [express] POST /api/auth/login 200 in 517ms :: {"user":{"id":2,"email":"alfagroupstoreok@…
+8:50:48 AM [express] GET /api/projects 200 in 532ms :: [{"id":42,"name":"Barbershop","description":"…
+✅ New WebSocket connection established
+New WebSocket connection
+8:50:48 AM [express] GET /api/auth/me 304 in 135ms :: {"id":2,"email":"alfagroupstoreok@gmail.com","…
+🔌 WebSocket connection closed
+WebSocket connection closed
+Received WebSocket message: { type: 'ping' }
+✅ New WebSocket connection established
+New WebSocket connection
+Received WebSocket message: { type: 'auth', userId: 2, token: null }
+🔐 WebSocket authentication attempt: { userId: 2, hasToken: false }
+✅ User registered on WebSocket: 2
+Received WebSocket message: { type: 'ping' }
+✅ New WebSocket connection established
+New WebSocket connection
+Received WebSocket message: { type: 'auth', userId: 2, token: null }
+🔐 WebSocket authentication attempt: { userId: 2, hasToken: false }
+✅ User registered on WebSocket: 2
+Received WebSocket message: { type: 'ping' }
+8:50:55 AM [express] GET /api/projects/42/payment-stages 200 in 570ms :: [{"id":135,"projectId":42,"…
+8:50:56 AM [express] GET /api/projects/42 200 in 799ms :: {"id":42,"name":"Barbershop","description"…
+8:50:57 AM [express] GET /api/exchange-rate 304 in 137ms :: {"id":17,"usdToGuarani":"6783.54","updat…
+💰 Processing payment confirmation for stage 137: {
+  paymentMethod: 'Mango (TU FINANCIERA)',
+  hasFile: false,
+  fileName: undefined,
+  fileSize: undefined,
+  mimetype: undefined
+}
+🔄 Enviando evento en tiempo real a usuario 1: {
+  eventType: 'payment_proof_uploaded',
+  eventData: {
+    stageId: 137,
+    projectId: 42,
+    clientId: 2,
+    stageName: 'Pre-entrega - 90% Completado',
+    paymentMethod: 'Mango (TU FINANCIERA)'
+  }
+}
+📡 Encontradas 3 conexiones para usuario 1
+✅ Evento payment_proof_uploaded enviado por WebSocket a usuario 1
+✅ Evento payment_proof_uploaded enviado por WebSocket a usuario 1
+✅ Evento payment_proof_uploaded enviado por WebSocket a usuario 1
+ℹ️ No attachment provided for stage 137
+📧 Enviando notificación de comprobante al admin para Pablo
+📧 Enviando email a: softwarepar.lat@gmail.com, Asunto: 🎉 Comprobante de pago recibido: Barbershop - Pre-entrega - 90% Completado ($125.00)
+📧 Email enviado exitosamente a: softwarepar.lat@gmail.com
+📧 Enviando confirmación de comprobante al cliente: alfagroupstoreok@gmail.com
+📧 Enviando email a: alfagroupstoreok@gmail.com, Asunto: Comprobante recibido: Barbershop - Pre-entrega - 90% Completado
+📧 Email enviado exitosamente a: alfagroupstoreok@gmail.com
+📧 Email notifications sent for Pablo's payment
+8:51:04 AM [express] POST /api/payment-stages/137/confirm-payment 200 in 5001ms :: {"id":137,"projec…
+🔌 WebSocket connection closed
+WebSocket connection closed
+✅ New WebSocket connection established
+New WebSocket connection
+8:51:12 AM [express] GET /api/admin/partners 304 in 796ms :: []
+8:51:12 AM [express] GET /api/admin/partners/stats 304 in 1089ms :: {"totalPartners":0,"activePartne…
+🔌 WebSocket connection closed
+WebSocket connection closed
+✅ New WebSocket connection established
+New WebSocket connection
+Received WebSocket message: { type: 'auth', userId: 1, token: null }
+🔐 WebSocket authentication attempt: { userId: 1, hasToken: false }
+✅ User registered on WebSocket: 1
+✅ New WebSocket connection established
+New WebSocket connection
+Received WebSocket message: { type: 'auth', userId: 1, token: null }
+🔐 WebSocket authentication attempt: { userId: 1, hasToken: false }
+✅ User registered on WebSocket: 1
+✅ New WebSocket connection established
+New WebSocket connection
+Received WebSocket message: { type: 'auth', userId: 1, token: null }
+🔐 WebSocket authentication attempt: { userId: 1, hasToken: false }
+✅ User registered on WebSocket: 1
+✅ New WebSocket connection established
+New WebSocket connection
+Received WebSocket message: { type: 'auth', userId: 1, token: null }
+🔐 WebSocket authentication attempt: { userId: 1, hasToken: false }
+✅ User registered on WebSocket: 1
+✅ New WebSocket connection established
+New WebSocket connection
+Received WebSocket message: { type: 'auth', userId: 1, token: null }
+🔐 WebSocket authentication attempt: { userId: 1, hasToken: false }
+✅ User registered on WebSocket: 1
+✅ New WebSocket connection established
+New WebSocket connection
+Received WebSocket message: { type: 'auth', userId: 1, token: null }
+🔐 WebSocket authentication attempt: { userId: 1, hasToken: false }
+✅ User registered on WebSocket: 1
+🔌 WebSocket connection closed
+WebSocket connection closed
+🔌 WebSocket connection closed
+WebSocket connection closed
+🔌 WebSocket connection closed
+WebSocket connection closed
+🔌 WebSocket connection closed
+WebSocket connection closed
+🔌 WebSocket connection closed
+WebSocket connection closed
+🔌 WebSocket connection closed
+WebSocket connection closed
+🔌 WebSocket connection closed
+WebSocket connection closed
+🔌 WebSocket connection closed
+WebSocket connection closed
+Received WebSocket message: { type: 'ping' }
+Received WebSocket message: { type: 'ping' }
+8:51:31 AM [express] GET /api/auth/me 304 in 400ms :: {"id":1,"email":"softwarepar.lat@gmail.com","f…
+8:51:32 AM [express] GET /api/admin/projects 304 in 539ms :: [{"id":42,"name":"Barbershop","descript…
+✅ New WebSocket connection established
+New WebSocket connection
+Received WebSocket message: { type: 'auth', userId: 1, token: null }
+🔐 WebSocket authentication attempt: { userId: 1, hasToken: false }
+✅ User registered on WebSocket: 1
+8:51:32 AM [express] GET /api/admin/projects/stats 304 in 804ms :: {"pending":"0","inProgress":"0","…
+8:51:36 AM [express] GET /api/projects/42/payment-stages 200 in 270ms :: [{"id":135,"projectId":42,"…
+✅ Admin approving payment for stage: 137
+💱 Saving exchange rate at the time of payment: 1 USD = 6783.54 PYG for stage 137
+📧 Enviando email a: alfagroupstoreok@gmail.com, Asunto: ✅ Pago Aprobado: Barbershop - Pre-entrega - 90% Completado
+📧 Email enviado exitosamente a: alfagroupstoreok@gmail.com
+📧 Email de pago aprobado enviado a cliente: alfagroupstoreok@gmail.com
+🔄 Enviando evento en tiempo real a usuario 2: {
+  eventType: 'payment_approved',
+  eventData: {
+    stageId: 137,
+    projectId: 42,
+    stageName: 'Pre-entrega - 90% Completado'
+  }
+}
+📡 Encontradas 2 conexiones para usuario 2
+✅ Evento payment_approved enviado por WebSocket a usuario 2
+✅ Evento payment_approved enviado por WebSocket a usuario 2
+🔄 Enviando evento en tiempo real a usuario 1: {
+  eventType: 'payment_approved',
+  eventData: {
+    stageId: 137,
+    projectId: 42,
+    clientId: 2,
+    stageName: 'Pre-entrega - 90% Completado'
+  }
+}
+📡 Encontradas 1 conexiones para usuario 1
+✅ Evento payment_approved enviado por WebSocket a usuario 1
+📄 Generating invoice for stage 137...
+✅ Invoice created: 001-001-0000027
+8:51:43 AM [express] POST /api/payment-stages/137/approve-payment 200 in 4159ms :: {"id":137,"projec…
+🔄 Starting FacturaSend process for invoice 001-001-0000027...
+⚠️  No se pudieron obtener catálogos de FacturaSend. Usando Asunción por defecto.
+⚠️  IMPORTANTE: Esto puede causar rechazo si el cliente no es de Asunción.
+💬 Observación enviada a FacturaSend: Tipo de cambio: 1 USD = 6.783,54 PYG. Monto original: USD 125.00
+📤 Sending to FacturaSend...
+📤 Enviando factura a FacturaSend...
+📋 Datos: {
+  numero: 27,
+  cliente: 'ALFA GROUP STORE',
+  precioSinIVA: 770857,
+  ivaBase: 770857,
+  totalCalculado: 847943,
+  montoPagado: 847943,
+  moneda: 'PYG'
+}
+📦 Payload completo: [
+  {
+    "tipoDocumento": 1,
+    "establecimiento": 1,
+    "punto": 1,
+    "numero": 27,
+    "fecha": "2026-01-02T08:51:44",
+    "tipoEmision": 1,
+    "tipoTransaccion": 2,
+    "tipoImpuesto": 1,
+    "moneda": "PYG",
+    "observacion": "Tipo de cambio: 1 USD = 6.783,54 PYG. Monto original: USD 125.00",
+    "cliente": {
+      "contribuyente": true,
+      "razonSocial": "ALFA GROUP STORE",
+      "tipoOperacion": 1,
+      "direccion": "Barrio Residencial – Carlos A. López – Itapúa",
+      "numeroCasa": "0",
+      "departamento": 1,
+      "departamentoDescripcion": "CAPITAL",
+      "distrito": 1,
+      "distritoDescripcion": "ASUNCION",
+      "pais": "PRY",
+      "paisDescripcion": "Paraguay",
+      "tipoContribuyente": 2,
+      "telefono": "+595985990044",
+      "celular": "+595985990044",
+      "email": "alfagroupstoreok@gmail.com",
+      "codigo": "002",
+      "ciudad": 1,
+      "ciudadDescripcion": "ASUNCION",
+      "ruc": "80000000-1"
+    },
+    "usuario": {
+      "documentoTipo": 1,
+      "documentoNumero": "4220058",
+      "nombre": "BENITEZ DE LA CRUZ JHONI FABIAN",
+      "cargo": "Propietario"
+    },
+    "factura": {
+      "presencia": 2
+    },
+    "condicion": {
+      "tipo": 1,
+      "entregas": [
+        {
+          "tipo": 9,
+          "monto": 847943,
+          "moneda": "PYG"
+        }
+      ]
+    },
+    "items": [
+      {
+        "descripcion": "Pre-entrega - 90% Completado",
+        "cantidad": 1,
+        "unidadMedida": 77,
+        "precioUnitario": 770857,
+        "ivaTipo": 1,
+        "ivaBase": 770857,
+        "ivaProporcion": 100
+      }
+    ]
+  }
+]
+🚀 URL FINAL ENVIADA: https://api.facturasend.com.py/jhonifabianbenitezdelacruz_7451/lote/create?xml=true&qr=true
+📤 Headers enviados:
+  - Content-Type: application/json; charset=utf-8
+  - Authorization: Bearer api_key_[CONFIGURADO]
+  - API Key length: 36
+📥 Response status: 200
+📥 Response body: {"success":false,"error":"Algun/os error/es no permitio/tieron generar el XML del documento electrónico","errores":[{"index":0,"error":"Valor invalido \"iva\"=undefined proporcionado en data.items[0].iva"}]}
+❌ FacturaSend rechazó la factura: {
+  success: false,
+  error: 'Algun/os error/es no permitio/tieron generar el XML del documento electrónico',
+  errores: [
+    {
+      index: 0,
+      error: 'Valor invalido "iva"=undefined proporcionado en data.items[0].iva'
+    }
+  ]
+}
+✅ Invoice updated with FacturaSend data:
+   📋 CDC: Not available
+   📱 QR URL: Not available
+   📊 Status: rechazado
+   📝 Protocol: null
+❌ FacturaSend: RECHAZADO
+💬 Message: Algun/os error/es no permitio/tieron generar el XML del documento electrónico
+8:51:45 AM [express] GET /api/projects/42/payment-stages 200 in 270ms :: [{"id":135,"projectId":42,"…
+8:51:47 AM [express] GET /api/projects/42/payment-stages 304 in 269ms :: [{"id":135,"projectId":42,"…
+8:51:47 AM [express] GET /api/projects/42/payment-stages 304 in 270ms :: [{"id":135,"projectId":42,"…

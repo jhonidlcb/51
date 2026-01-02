@@ -1,0 +1,1132 @@
+image
+Inicio Recursos
+ Soluciones
+ Blog
+Consola
+Buscar algo...
+betterdocs-category-icon
+1-Guía de inicio
+5
+betterdocs-category-icon
+2-Adapta tu Software
+2
+betterdocs-category-icon
+3-API de FacturaSend
+29
+Consultar envío de email de un Documento
+Crear un documento electrónico
+Consultar un Documento por ID
+Consultar un Documento por CDC
+Consultar un Documento por Número
+Consultar Estados de Documentos
+Obtener XML del DE
+Obtener KuDE del DE
+Re-enviar email de un Documento
+Re-enviar mensaje de WhatsApp de un Documento
+SIFEN – Consulta de RUC
+SIFEN – Consulta DTE por CDC
+Estructura JSON de un DE
+Ejemplo de JSON por Tipo de Documento
+Evento de Cancelación
+Evento de Inutilización
+Evento de conformidad
+Evento de disconformidad
+Evento de desconocimiento
+Evento de notificación
+Evento de nominación
+Lotes en Borrador
+Consultar todos los departamentos
+Consultar todos los distritos
+Consultar todas las Ciudades
+Consultar parámetros del Contribuyente
+Obtener versión de dependencias
+Crear un Recibo Digital
+Obtener KuDE del Recibo Digital
+betterdocs-category-icon
+4-Ambiente de Pruebas
+3
+betterdocs-category-icon
+5-Ingresar a producción
+3
+betterdocs-category-icon
+Integración desde una base de datos
+11
+betterdocs-category-icon
+Errores frecuentes
+4
+betterdocs-category-icon
+Guías
+1
+Tabla de contenidos
+Objeto data (raiz)
+Objeto data.cliente
+Consideraciones especiales en objeto data.cliente.tipoOperacion
+Objeto data.usuario
+Objeto data.obligaciones
+Objeto data.dncp
+Objeto data.factura
+Objeto data.autoFactura
+Objeto data.autoFactura.ubicacion
+Objeto data.notaCreditoDebito
+Objeto data.remision
+Objeto data.items
+Objeto data.items.dncp
+Objeto data.items.sectorAutomotor
+Objeto data.condicion
+Objeto data.condicion.entregas
+Objeto data.condicion.entregas.infoTarjeta
+Objeto data.condicion.entregas.infoCheque
+Objeto data.condicion.credito
+Objeto data.condicion.credito.infoCuotas
+Objeto data.sectorEnergiaElectrica
+Objeto data.sectorSeguros
+Objeto data.sectorSupermercados
+Objeto data.sectorAdicional
+Objeto data.transporte
+Objeto data.transporte.salida
+Objeto data.transporte.entrega
+Objeto data.transporte.vehiculo
+Objeto data.transporte.transportista
+Objeto data.transporte.transportista.chofer
+Objeto data.transporte.transportista.agente
+Objeto data.complementarios
+Objeto data.complementarios.carga
+Objeto data.documentoAsociado
+Documentación
+3-API de FacturaSend
+Estructura JSON de un DE
+Estructura JSON de un DE
+
+Marcos Jara
+Updated on 12 de diciembre de 2025
+23 minutos de lectura
+
+Tabla de contenidos
+Objeto data (raiz)
+Objeto data.cliente
+Consideraciones especiales en objeto data.cliente.tipoOperacion
+Objeto data.usuario
+Objeto data.obligaciones
+Objeto data.dncp
+Objeto data.factura
+Objeto data.autoFactura
+Objeto data.autoFactura.ubicacion
+Objeto data.notaCreditoDebito
+Objeto data.remision
+Objeto data.items
+Objeto data.items.dncp
+Objeto data.items.sectorAutomotor
+Objeto data.condicion
+Objeto data.condicion.entregas
+Objeto data.condicion.entregas.infoTarjeta
+Objeto data.condicion.entregas.infoCheque
+Objeto data.condicion.credito
+Objeto data.condicion.credito.infoCuotas
+Objeto data.sectorEnergiaElectrica
+Objeto data.sectorSeguros
+Objeto data.sectorSupermercados
+Objeto data.sectorAdicional
+Objeto data.transporte
+Objeto data.transporte.salida
+Objeto data.transporte.entrega
+Objeto data.transporte.vehiculo
+Objeto data.transporte.transportista
+Objeto data.transporte.transportista.chofer
+Objeto data.transporte.transportista.agente
+Objeto data.complementarios
+Objeto data.complementarios.carga
+Objeto data.documentoAsociado
+A continuación se describe la estructura completa de atributos del JSON requerido para crear un nuevo documento electrónico.
+
+A la derecha puede observarse un ejemplo con los valores obligatorios especificados, así como la relación que guardan éstos atributos con los del manual técnico. Por ejemplo el tipo de documento en el manual técnico es el C002.c
+
+Algunos campos son obligatorios para el eKuatia, para lo cual desde FacturaSend se asumen algunos valores por defecto en el caso que no sean proveídos en el parámetro principal.
+
+Otras veces los campos que no son obligatorios pasan a ser obligatorios por que dependen de otros casos. Esta obligatoriedad temporal se detalla en la descripción de cada campo.
+
+Objeto data (raiz)
+Para los atributos del objeto JSON también puede utilizar _ (underscore), es decir, se interpreta de la misma manera si envia tipoDocumento o tipo_documento.
+
+Parámetro	Requerido	Descripción
+tipoDocumento	Si	Uno de los 5 tipos de documentos admitidos por eKuatia (1, 4, 5, 6, 7). Ej.:
+1= Factura electrónica,
+4= Autofactura electrónica
+5= Nota de crédito electrónica,
+6= Nota de débito electrónica,
+7= Nota de remisión electrónica.
+
+Campo XML: C002.
+establecimiento	Si	Representa al código de establecimiento del emisor, se puede enviar 1 o ‘001’
+
+Campo XML: C005.
+punto	Si	Es el punto de emisión del documento electrónico, se puede enviar 1 o ‘001’
+
+Campo XML: C006.
+numero	Si	Es el número del documento electrónico, se puede enviar directamente el número o completar con 0 a la izquierda hasta alcanzar 7 digitos. Ej.: 1 o ‘0000001’.
+
+Campo XML:C007
+serie	No	Serie de 2 digitos de la numeración del documento electrónico. Solo debe enviarse cuando se utiliza la totalidad de la numeración de 7 dígitos, empezando por la serie AA, AB, AC, BA, BB, BC…ZZ.
+
+Campo XML: C010
+descripcion	No	Información de interés del Fisco respecto al DE.
+
+Este campo no muestra en el KuDE A4 ni en el Ticket, pero sí muestra en el KuDE Personalizado, cuando se incluyan los datos de exportación. Ver datelles AQUI
+
+Campo XML: B006.
+observacion	No	Información de interés del emisor respecto al DE.
+
+Campo XML: B005.
+fecha	Si	Fecha y hora de emisión del DE.
+
+Campo XML: D002.
+tipoEmision	No	Tipo de emisión del DE (1 o 2)
+Valores:
+1=Normal (Por defecto).
+2=Contingencia.
+
+Campo XML: B002.
+tipoTransaccion	No	Tipo de Transacción.
+Valores:
+1=Venta de mercadería (Por defecto).
+2=Prestación de servicios.
+3=Mixto (Venta de mercadería y servicios).
+4=Venta de activo fijo.
+5=Venta de divisas.
+6=Compra de divisas.
+7=Promoción o entrega de muestras.
+8=Donación.
+9=Anticipo.
+10=Compra de Productos.
+11=Venta de Crédito fiscal.
+12=Compra de Crédito fiscal.
+
+13=Muestras médicas (Art. 3 RG 24/2014).
+tipoTransaccion es obligatorio para el tipo de documento (tipoDocumento) igual a 1-Factura Electrónica o 4-AutoFactura.
+
+Campo XML: D011.
+tipoImpuesto	Si	Tipo de impuesto afectado.
+Valores:
+1=IVA.
+2=ISC.
+3=Renta.
+4=Ninguno.
+5=IVA – Renta.
+
+Campo XML: D013.
+moneda	No	Código de la moneda de la operación de acuerdo con la norma ISO 4217. Si no se pasa asume el valor por defecto “PYG”
+
+Campo XML: D015.
+condicionAnticipo	No	Condición del Anticipo.
+Valores:
+1=Anticipo Global.
+2=Anticipo por ítem.
+No es obligatorio informar.
+
+Campo XML: D019.
+condicionTipoCambio	No	Condición del tipo de cambio.
+Valores:
+1=Global (un solo tipo de cambio para todo el DE).
+2=Por ítem (tipo de cambio distinto por ítem).
+Obligatorio si moneda ≠ PYG,
+Si la moneda es PYG no enviar éste atributo o enviar con el valor null.
+
+Campo XML: D017.
+obligaciones	No	Obligaciones afectadas.
+Debe ser enviado como un array de objetos. Ver detalle en tabla data.obligaciones
+
+Campo XML: D030 – NT18.
+cambio	No	Valor del cambio de la moneda de la operación en la cotización del día.
+Ej.: 6500.00 si la moneda es USD.
+Si la moneda es PYG no enviar éste campo o enviar null
+
+Campo XML: D018
+cdc	No	Código CDC de 44 dígitos que desea utilizarse para el DE.
+
+En ocasiones puede ser necesario re-utilizar el mismo CDC de un DE que ha sido rechazado anteriormente, por ejemplo si el Documento KUDE ya ha sido entregado al Cliente, corrigiendo el error y volviendo a intentar la aprobación con el mismo CDC.
+cliente	Si	Datos del Receptor del Documento Electrónico.
+Ver detalle en tabla data.cliente.
+usuario	No	Campos que identifican al responsable de la generación del DE. Ver detalle en tabla data.usuario.
+factura	No	Conjunto de información relacionada a la Factura Electrónica.
+Solo es necesario cuando el tipoDocumento=1 (Factura Electrónica)
+Ver detalle en tabla data.factura.
+autoFactura	No	Conjunto de información relacionada a la Autofactura Electrónica
+Solo es necesario cuando el tipoDocumento=4 (Autofactura Electrónica
+Ver detalle en tabla data.autoFactura.
+notaCreditoDebito	No	Conjunto de información relacionada a la Nota de Credito o Debito.
+Solo es necesario cuando el tipoDocumento=5 o tipoDocumento=6 (Nota de Credito/Nota de Debito)
+Ver detalle en tabla data.notaCreditoDebito.
+remision	No	Conjunto de información relacionada a la Remisión.
+Solo es necesario cuando el tipoDocumento=7 (Nota de Remisión)
+Ver detalle en tabla data.remision.
+items	Si	Conjunto de información relacionada a los items del Documento electrónico.
+Ver detalle en tabla data.items.
+condicion	No	Conjunto de información relacionada a la condición de Pago por el Documento electrónico.
+Ver detalle en tabla data.condicion.
+complementarios	No	Conjunto de información relacionada a los datos complementarios del Documento electrónico.
+Ver detalle en tabla data.complementarios.
+transporte	No	Conjunto de información relacionada a los datos datos de transporte del Documento electrónico.
+Ver detalle en tabla data.transporte.
+documentoAsociado	No	Conjunto de información relacionada a los datos documentos asociados del Documento electrónico.
+Ver detalle en tabla data.documentoAsociado.
+descuentoGlobal	No	Descuento global de la Operación
+Campo XML: Relacionado a EA004
+anticipoGlobal	No	Anticipo global de la Operación
+Campo XML: Relacionado a EA007
+dncp	No	Campos de informaciones de Compras Públicas.
+
+Obligatorio si tipoOperacion=3
+
+Ver detalle en tabla data.dncp
+extras	No	Objeto de datos extras del Documento Electronico en formato key=value que puede ser enviado de forma adicional para cualquier necesidad del emisor.
+
+El mismo puede ser utilizado para mostrar en el KUDE o para fines de integracion ya que envia en el Webhook.
+
+Ej.:
+“extras” : {
+  “pedidoCliente” : “2123-1”,
+  “numeroPresupuesto”: “P/001”,
+  “posTicketId” : 39271
+}
+
+Solo se acepta un nivel de JSON y en formato clave valor (no enviar el valor como otro sub JSON)
+
+Keys reservadas para uso del FS:
+“currentCopy” y “exportacion”.
+format	No	Indica la configuración del formato de impresión (Factura, Ticket o Personalizado) con el cual se guardará el Documento Electrónico, y el cual será su valor por defecto. Si no se pasa éste atributo, se asumirá el configurado en el establecimiento a travez de la consola.
+
+Al enviar un DE por correo o imprimir un ticket se utilizará ésta opción guardada.
+
+También podrá, posteriormente, indicar explicitamente el formato que desea al momento de obtener el PDF del KUDE
+
+Posibles Valores:
+ticket=Especifica que el KUDE del DE quedará guardado en modo Ticket
+custom=Especifica que el KUDE del DE quedará guardado con el formato personalizado. (Sólo vàlido para tipoDocumento=1)
+
+Para emitir en formato normal ignore ésta opción
+infoAdicional	No	Información adicional de
+interés para el emisor.
+
+Campo de información de interés exclusivo del emisor para aclaraciones a sus clientes.
+Este campo NO se envía al SIFEN. Puede formar parte del DE o KuDE enviado al receptor, pero NO formará parte del DTE.
+
+Campo XML: J003
+config	No	Permite pisar configuraciones por defecto de FacturaSend, como por ejemplo la configuración de decimales.
+
+Ver detalles AQUI
+Objeto data.cliente
+Parámetro	Requerido	Descripción
+contribuyente	Si	Si el receptor(Cliente) del DE es contribuyente Valores: true o false
+Campo XML: D201
+ruc	No	R.U.C. del Cliente, Obligarorio si es contribuyente.
+Campo XML: D206
+razonSocial	Si	Nombre o Razon social del cliente,En caso de DE innominado,completar con “Sin Nombre”
+Campo XML: D211
+nombreFantasia	No	Nombre de fantasia del cliente
+Campo XML: D212
+tipoOperacion	Si	Tipo de operación(1= B2B, 2= B2C, 3= B2G, 4= B2F)
+
+Se debe enviar 3=B2G si es una Institucion del Estado, ya sea si es una operación sin licitacion o si tiene datos de licitacion de la DNCP, caso contrario enviar como 1=B2B*
+Campo XML:* D202
+direccion	No	Direccion del Cliente, Campo obligatorio cuando tipoDocumento =7 o tipoOperacion=4
+Campo XML: D213
+numeroCasa	No	Numero de Casa del Cliente, Campo obligatorio si se informa la direccion,Cuando es contribuyente debe corresponder a lo declarado en el RUC
+Campo XML: D218
+departamento	No	Código del departamento,Campo obligatorio si se informa la dirección y tipoOperacion ≠ 4, no se debe informar cuando tipoOperacion = 4.
+Campo XML: D219
+distrito	No	Código del distrito del Cliente, El código debe seguir la Tabla 2.1 – Distritos del Manual Tecnico.
+Campo XML: D221
+ciudad	No	Código de la ciudad del Cliente. Campo obligatorio si se informa la dirección y tipoOperacion≠4, no se debe informar cuando tipoOperacion = 4.
+Campo XML:D223
+pais	Si	Código del Pais del Cliente, Segun XSD de Codificación de Países
+Campo XML:D203
+tipoContribuyente	No	Tipo de contribuyente Ej.: 1= Persona Física, 2= Persona Jurídica
+Obligatorio si contribuyente = true, No informar si contribuyente = false
+Campo XML:D205
+documentoTipo	No	Tipo de documento del cliente, de acuerdo a
+
+1=Cédula paraguaya
+2=Pasaporte
+3=Cédula extranjera
+4=Carnet de residencia
+5=Innominado
+6=Tarjeta Diplomática de exoneración fiscal
+9=Informar data.cliente.documentoTipoDescripcion
+
+Campo XML:D208
+
+Obligatorio sólo cuando data.contribuyente = false
+documentoNumero	No	Número de documento de identidad.Obligatorio si contribuyente = false y tipoOperacion ≠ 4.
+En caso de DE innominado, completar con 0 (cero)
+Campo XML:D210
+telefono	No	Número de teléfono. Debe incluir el prefijo de la ciudad si pais = PRY
+Campo XML:D214
+celular	No	Numero de celular del cliente
+
+Si tiene habilitado el servicio de WhatsApp, al aprobarse el DTE se enviará a dicho número el KUDE correspondiente.
+
+Si se le pasa más de un celular (separado por comas) en eKuatia se incluirá sólo el primero.
+
+Campo XML:D215
+email	No	Correo electrónico del cliente.
+
+Si tiene configurado un proveedor de correo saliente, al aprobarse el DTE, se enviará a dicho correo el KUDE y XML correspondiente.
+
+Si se le pasa más de un correo (separado por comas) en eKuatia se incluirá sólo el primero
+
+Campo XML:D216
+codigo	Si	Código del Cliente. Obligatorio para FacturaSend.
+
+Campo XML:D217
+Consideraciones especiales en objeto data.cliente.tipoOperacion
+Si el Cliente es un contribuyente (data.cliente.contribuyente = true), entonces:
+a) si el tipo de cliente es Persona Física (data.cliente.tipoContribuyente = 1), entonces éste campo puede enviarse con el valor 2-B2C (Business to Consumer), o;
+b) si el tipo de cliente es Persona Jurídica (data.cliente.tipoContribuyente = 2), entonces éste campo puede enviarse con el valor 1-B2B (Business to Business), o;
+c) si el RUC pertenece a un proveedor del estado, entonces éste valor debe enviarse como 3-B2G (Business to Goverment).
+Si el Cliente NO es contribuyente (data.cliente.contribuyente = false), entonces:
+a) Si el tipo de documento es Cédula de Identidad, Pasaporte, Carnet de residencia, Innominado, Tarjeta Diplomática de exoneración fiscal u otro (data.cliente.documentoTipo = 1,2,4,5,6 o 9), entonces éste campo puede enviarse con el valor 2-B2C (Business to Consumer), o;
+b) Si el tipo de documento es Cédula Extranjera (data.cliente.documentoTipo = 3), entonces éste campo puede enviarse con el valor 4-B2F (Business to Foreign).
+
+Objeto data.usuario
+Parámetro	Requerido	Descripción
+documentoTipo	Si	Tipo de documento de identidad del responsable de la generación del DE
+
+Valores:
+1=Cédula paraguaya
+2=Pasaporte
+3=Cédula extranjera
+4=Carnet de residencia
+9=Otro
+
+Campo XML:D141
+documentoTipoDescripcion	No	Descripción del Tipo de documento de identidad del responsable de la generación del DE
+Solo es necesario cuando documentoTipo=9
+Campo XML:D142
+documentoNumero	Si	Número de documento de identidad del responsable de la generación del DE
+Campo XML:D143
+nombre	Si	Nombre o razón social del responsable de la generación del DE
+Campo XML:D144
+cargo	Si	Cargo del responsable de la generación del DE
+Campo XML:D145
+email	No	Email del responsable de la generación del DE (Esta información no se envía a la SET)
+
+Si se pasa un email válido, también se notifican a éste correo los mensajes de FacturaSend.
+Objeto data.obligaciones
+Parámetro	Requerido	Descripción
+codigo	Si	Código de la Obligación afectada. Valores:
+113-IMPUESTO A LA RENTA IRACIS – REGÍMENES ESPECIALES
+143-TRIBUTO UNICO MAQUILA
+211-IMPUESTO AL VALOR AGREGADO – GRAVADAS Y EXONERADAS – EXPORTADORES
+311-IMPUESTO SELECTIVO AL CONSUMO – GENERAL
+321-IMPUESTO SELECTIVO AL CONSUMO COMBUSTIBLES
+700-IMPUESTO A LA RENTA EMPRESARIAL – RÉGIMEN GENERAL
+701-IMPUESTO A LA RENTA EMPRESARIAL – SIMPLE
+703-IMPUESTO DE ZONA FRANCA
+702-IMPUESTO A LA RENTA EMPRESARIAL – RESIMPLE
+715-IMPUESTO A LA RENTA PERSONAL – SERVICIOS PERSONALES
+716-IMPUESTO A LA RENTA PERSONAL – RENTAS Y GANANCIAS DE CAPITAL
+
+Campo XML: D031
+descripcion	No	Descripción de la Obligación. No es necesario pasar
+Campo XML: D032
+Objeto data.dncp
+Los campos son requeridos cuando el tipo de operacion (data.tipoOperacion) = 3-B2G.
+En caso de no tener licitación regulada por la DNCP, podrán informar con ceros (0) o en su defecto uno (1), los campos de informaciones públicas a fin de que el documento pueda superar las validaciones.
+
+Parámetro	Requerido	Descripción
+modalidad	Si	Modalidad – Código emitido por la DNCP
+Campo XML: E021
+entidad	Si	Entidad – Código emitido por la DNCP
+Campo XML: E022
+año	Si	Año – Código emitido por la DNCP
+Campo XML: E023
+secuencia	Si	Secuencia – emitido por la DNCP
+Campo XML: E024
+fecha	Si	Fecha de emisión del código de contratación por la DNCP
+Campo XML: E025
+Objeto data.factura
+Parámetro	Requerido	Descripción
+presencia	Si	Indicador de presencia
+1= Operación presencial
+2= Operación electrónica
+3= Operación telemarketing
+4= Venta a domicilio
+5= Operación bancaria
+6= Operación cíclica
+9= Otro
+Campo XML: E011
+fechaEnvio	No	Fecha futura del traslado de mercadería
+Campo XML: E013
+Objeto data.autoFactura
+Parámetro	Requerido	Descripción
+tipoVendedor	Si	Naturaleza del vendedor
+1= No contribuyente
+2= Extranjero
+Campo XML: E301
+documentoTipo	Si	Tipo de documento de identidad del vendedor
+Campo XML: E304
+documentoNumero	Si	Número de documento de identidad del vendedor
+Campo XML: E306
+nombre	Si	Nombre y apellido del vendedor
+Campo XML: E307
+direccion	Si	Dirección del vendedor.En caso de extranjeros, colocar la dirección en donde se realizó la transacción.
+Campo XML: E308
+numeroCasa	Si	Número de casa del vendedor.Si no tiene numeración colocar 0 (cero)
+Campo XML: E309
+departamento	Si	Código del departamento del vendedor
+Campo XML: E310
+departamentoDescripcion	No	Descripción del departamento del vendedor
+Campo XML: E311
+distrito	Si	Código del distrito del vendedor
+Campo XML: E312
+distritoDescripcion	No	Descripción del distrito del vendedor
+Campo XML: E313
+ciudad	Si	Código de la ciudad del vendedor
+Campo XML: E314
+ciudadDescripcion	No	Descripción del ciudad del vendedor
+Campo XML: E315
+ubicacion	Si	Ver detalle en tabla data.autoFactura.ubicacion
+Objeto data.autoFactura.ubicacion
+Parámetro	Requerido	Descripción
+lugar	Si	Lugar de la transacción
+Campo XML: E316
+departamento	Si	Código del departamento donde se realiza la transacción
+Campo XML: E317
+departamentoDescripcion	No	Descripcion del departamento donde se realiza la transacción
+Campo XML: E318
+distrito	Si	
+Código del distrito donde se realiza la transacción Campo XML: E319
+distritoDescripcion	No	Descripcion del distrito donde se realiza la transacción
+Campo XML: E320
+ciudad	Si	Código de la ciudad donde se realiza la transacción
+Campo XML: E321
+ciudadDescripcion	No	Descripcion de la ciudad donde se realiza la transacción
+Campo XML: E322
+Objeto data.notaCreditoDebito
+Parámetro	Requerido	Descripción
+motivo	Si	Motivo de la emisión
+1= Devolución y Ajuste de precios
+2= Devolución
+3= Descuento
+4= Bonificación
+5= Crédito incobrable
+6= Recupero de costo
+7= Recupero de gasto
+8= Ajuste de precio
+
+Campo XML: E401
+Objeto data.remision
+Parámetro	Requerido	Descripción
+motivo	Si	Valor numério del Motivo de la emisión:
+1= Traslado por venta
+2= Traslado por consignación
+3= Exportación
+4= Traslado por compra
+5= Importación
+6= Traslado por devolución
+7= Traslado entre locales de la empresa
+8= Traslado de bienes por transformación
+9= Traslado de bienes por reparación
+10= Traslado por emisor móvil
+11= Exhibición o demostración
+12= Participación en ferias
+13= Traslado de encomienda
+14= Decomiso
+99=Otro (deberá consignarse expresamente el o los motivos diferentes a los mencionados anteriormente)
+
+Obs.: Cuando el motivo sea por operaciones internas de la empresa, el RUC del receptor debe ser igual al RUC del emisor.
+
+Campo XML: E501
+motivoDescripcion	No	Descripción del Motivo de la emisión, caso el motivo sea igual a 99
+
+Campo XML: E502
+tipoResponsable	Si	Responsable de la emisión de la Nota Remisión Electrónica:
+1= Emisor de la factura
+2= Poseedor de la factura y bienes
+3= Empresa transportista
+4= Despachante de Aduanas
+5= Agente de transporte o intermediario
+
+Campo XML: E503, E504
+kms	Si	Kilómetros estimados de recorrido
+
+Campo XML: E505
+fechaFactura	No	Fecha futura de emisión de la factura (AAAA-MM-DD)
+
+Campo XML: E506
+costoFlete	No	Costo del Flete N(15,8)
+
+Campo XML: E507
+Objeto data.items
+Parámetro	Requerido	Descripción
+codigo	Si	Código interno de identificación de la mercadería o servicio de responsabilidad del emisor
+Campo XML: E701
+descripcion	Si	Descripción del producto y/o servicio. Equivalente a nombre del producto establecido en la RG 24/2019
+Campo XML: E708
+observacion	No	Informacion de intetes acerca del item
+Campo XML: E714
+partidaArancelaria	No	Partida arancelaria
+Campo XML: E702
+ncm	No	Nomenclatura común del Mercosur (NCM)
+Campo XML: E703
+unidadMedida	Si	Es la unidad de medida del producto
+Campo XML: E709
+cantidad	Si	Cantidad del producto y/o servicio
+Campo XML: E711
+precioUnitario	Si	Precio unitario del producto y/o servicio (incluidos impuestos)
+Campo XML: E721
+cambio	No	Tipo de cambio por ítem
+Campo XML: E725
+descuento	No	Descuento particular sobre el precio unitario por ítem (incluidos impuestos)
+Campo XML: EA002
+anticipo	No	Anticipo particular sobre el precio unitario por ítem (incluidos impuestos)
+Campo XML: EA006
+pais	No	
+Código del país de origen del producto*Campo XML:* E712
+paisDescripcion	No	Nombre del país de origen del producto
+Campo XML: E713
+tolerancia	No	Código de tolerancia de merma de los productos
+Opcional si C002 = 7
+
+1=Tolerancia de quiebra
+2= Tolerancia de merma
+
+Según RG 41/14. Campo XML: E715
+toleranciaCantidad	No	Cantidad de quiebra o merma
+
+Obligatorio si se envia la tolerancia
+Campo XML: E717
+toleranciaPorcentaje	No	Porcentaje de quiebra o merma
+
+Obligatorio si se envia la tolerancia
+Campo XML: E718
+cdcAnticipo	No	CDC del anticipo
+Campo XML: E719
+ivaTipo	Si	Forma de afectación tributaria del IVA
+1= Gravado IVA
+2= Exonerado (Art. 83- Ley 125/91)
+3= Exento
+4= Gravado parcial Grav-Exento)
+Campo XML: E731
+ivaProporcion	Si	Corresponde al porcentaje (%)
+gravado
+Ejemplo:100, 50, 30, 0
+
+Campo XML: E733
+
+NOTA: Anteriormente este atributo se llamaba ivaBase y se cambio por que generaba confusion, pero sigue vigente por compatibilidad.
+iva	Si	Tasa del IVA
+Posibles valores = 0, 5 o 10
+
+Campo XML: E734
+lote	No	Numero de Lote del producto
+Valor alfanumérico
+Longitud: [1-80]
+
+Campo XML: E751
+vencimiento	No	Fecha de vencimiento del producto Formato AAAA-MM-DD
+Campo XML: E752
+numeroSerie	No	Número de serie
+Valor alfanumérico
+Longitud: [1-10]
+
+Campo XML: E753
+numeroPedido	No	Número de pedido
+
+Campo XML: E754
+numeroSeguimiento	No	Número de seguimiento del envío
+
+Campo XML: E755
+registroSenave	No	Número de registro del producto otorgado por el SENAVE
+Obligados por la RG N° 16/2019 y la RG N° 24/2019 – Agroquímicos
+
+Campo XML: E759
+registroEntidadComercial	No	Número de registro de entidad comercial otorgado por el SENAVE
+
+Campo XML: E760
+nombreProducto	No	Obligados por el Art. 1 de la RG N° 106/2021 – Agroquímicos
+
+Campo XML: E761
+dncp	No	Identificación de los datos de la DNCP
+Ver detalle en tabla data.items.dncp
+extras	No	Objeto de datos extras del item en formato key=value que puede ser enviado de forma adicional por cada item para cualquier necesidad del emisor.
+
+El mismo puede ser utilizado para mostrar en el KUDE o para fines de integracion ya que envia en el Webhook.
+
+Ej.:
+“extras” : {
+  “taxRate” : “15%”,
+  “barCode”: “7937638273256”,
+  “storeId” : 3
+}
+Solo se acepta un nivel de JSON y en formato clave valor (no enviar el valor como otro sub JSON)
+Objeto data.items.dncp
+Parámetro	Requerido	Descripción
+codigoNivelGeneral	No	Código DNCP – Nivel General. Obligatorio si tipoOperacion = 3
+Campo XML: E704
+codigoNivelEspecifico	No	Código DNCP – Nivel Especifico. Obligatorio si existe el campo codigoNivelGeneral
+Campo XML: E705
+codigoGtinProducto	No	Código GTIN por producto. Informar si la mercadería tiene GTIN
+Campo XML: E706
+codigoNivelPaquete	No	Código GTIN por paquete. Informar si el paquete tiene GTIN
+Campo XML: E707
+Objeto data.items.sectorAutomotor
+Parámetro	Requerido	Descripción
+tipo	No	Tipo de operación de venta de vehículos
+1= Venta a representante
+2= Venta al consumidor final
+3= Venta a gobierno
+4= Venta a flota de vehículos
+Campo XML: E771
+chasis	No	Chasis del vehículo
+Campo XML: E773
+color	No	Color del vehículo
+Campo XML: E774
+potencia	No	Potencia del motor (CV)
+Campo XML: E775
+capacidadMotor	No	Capacidad del motor. Expresa en centímetros cúbicos (cc)
+Campo XML: E776
+capacidadPasajeros	No	Capacidad máxima de pasajeros sentados
+Campo XML: E785
+pesoBruto	No	Peso bruto del vehiculo. En toneladas
+Campo XML: E778
+pesoNeto	No	Peso neto del vehiculo. En toneladas
+Campo XML: E777
+tipoCombustible	No	Tipo de combustible
+1= Gasolina
+2= Diésel
+3= Etanol
+4= GNV
+5= Flex
+9= Otro
+Campo XML: E779
+tipoCombustibleDescripcion	No	Descripción del tipo de combustible.
+Campo XML: E780
+numeroMotor	No	
+Número del motor*Campo XML:* E781
+capacidadTraccion	No	Capacidad máxima de tracción
+Campo XML: E782
+año	No	Año de fabricación
+Campo XML: E783
+tipoVehiculo	No	Tipo de vehículo
+Campo XML: E784
+cilindradas	No	Cilindradas del motor
+Campo XML: E786
+Objeto data.condicion
+Parámetro	Requerido	Descripción
+tipo	Si	Condición de la operación.
+1= Contado
+2= Crédito
+Campo XML: E601
+entregas	No	Datos que describen la forma de pago al contado o del monto de la entrega inicial. Ver detalle en tabla data.condicion.entregas.
+credito	No	Campos que describen la operación a crédito. Ver detalle en tabla data.condicion.credito.
+Objeto data.condicion.entregas
+Parámetro	Requerido	Descripción
+tipo	Si	Tipo de pago Ej.:1= Efectivo, 2= Cheque,3= Tarjeta de crédito, 4= Tarjeta de débito. Existe mas tipos de pagos ver en:
+Campo XML: E606
+tipoDescripcion	No	Descripción del Tipo de pago. Cuando el tipo = 99 es obligatorio especificar el tipo de pago personalizado :
+Campo XML: E607
+monto	Si	Monto por tipo de pago
+Campo XML: E608
+moneda	Si	Moneda por tipo de pago
+Según tabla de códigos para monedas de acuerdo con la norma ISO 4217 Se requiere la misma moneda para todos los ítems del DE
+Campo XML: E609
+cambio	No	Tipo de cambio por tipo de pago.
+Obligatorio si moneda ≠ PYG
+Campo XML: E611
+infoTarjeta	No	Campos que describen el pago o entrega inicial de la operación con tarjeta de crédito/débito. Ver detalle en tabla data.condicion.entregas.infoTarjeta
+infoCheque	No	Campos que describen el pago o entrega inicial de la operación con cheque. Ver detalle en tabla data.condicion.entregas.infoCheque
+extras	No	Objeto de datos extras de la entrega en formato key=value que puede ser enviado de forma adicional por cada condicion de entrega para cualquier necesidad del emisor.
+
+El mismo puede ser utilizado para mostrar en el KUDE o para fines de integracion ya que envia en el Webhook.
+
+Ej.:
+“extras” : {
+  “vuelto” : 8500,
+  “vueltoMoneda”: “PYG”
+  “numeroDoc”: “T-3232323”
+}
+Solo se acepta un nivel de JSON y en formato clave valor (no enviar el valor como otro sub JSON)
+Objeto data.condicion.entregas.infoTarjeta
+Parámetro	Requerido	Descripción
+tipo	Si	Denominación de la tarjeta.
+1= Visa
+2= Mastercard
+3= American Express
+4= Maestro
+5= Panal
+6= Cabal
+99= Otro
+Campo XML: E621
+tipoDescripcion	Si	
+Descripción de denominación de la tarjeta. Si tipo =99 informar la descripción de la denominación de la tarjeta*Campo XML:* E622
+numero	No	Número de la tarjeta. Cuatro últimos dígitos de la tarjeta
+Campo XML: E629
+titular	No	Nombre del titular de la tarjeta
+Campo XML: E628
+ruc	No	RUC de la procesadora de tarjeta
+Campo XML: E624
+razonSocial	No	Razón social de la procesadora de tarjeta
+Campo XML: E623
+medioPago	Si	Forma de procesamiento de pago.
+1= POS.
+2= Pago Electrónico (Ejemplo:compras por Internet)
+9= Otro
+Campo XML: E626
+codigoAutorizacion	No	Código de autorización de la operación
+Campo XML: E627
+Objeto data.condicion.entregas.infoCheque
+Parámetro	Requerido	Descripción
+numeroCheque	Si	Número de cheque. Completar con 0 (cero) a la izquierda hasta alcanzar 8 (ocho) cifras
+Campo XML: E631
+banco	Si	Banco emisor
+Campo XML: E632
+Objeto data.condicion.credito
+Parámetro	Requerido	Descripción
+tipo	Si	Condición de la operación a crédito
+1= Plazo
+2= Cuota
+Campo XML: E641
+plazo	No	Plazo del crédito. Obligatorio si tipo = 1
+Ejemplo: 30 días, 12 meses
+Campo XML: E643
+cuotas	No	Cantidad de cuotas. Plazo del crédito. Obligatorio si tipo = 2
+Ejemplo: 12, 24, 36
+Campo XML: E644
+infoCuotas	No	Campos que describen las cuotas.Ver detalle en tabla data.condicion.credito.infoCuotas
+Objeto data.condicion.credito.infoCuotas
+Parámetro	Requerido	Descripción
+moneda	Si	Moneda de las cuotas.Según tabla de códigos para monedas de acuerdo con la norma ISO 4217
+Campo XML: E653
+monto	Si	Monto de cada cuota
+Campo XML: E651
+vencimiento	No	Fecha de vencimiento de cada cuota
+Campo XML: E652
+Objeto data.sectorEnergiaElectrica
+Parámetro	Requerido	Descripción
+numeroMedidor	No	Número de medidor
+Campo XML: E792
+codigoActividad	No	Código de actividad
+Campo XML: E793
+codigoCategoria	No	Código de categoría E
+Campo XML: E794
+lecturaAnterior	No	Lectura anterior
+Campo XML: E795
+lecturaActual	No	Lectura actual
+Campo XML: E796
+Objeto data.sectorSeguros
+Parámetro	Requerido	Descripción
+codigoAseguradora	No	Código de la empresa de seguros en la Superintendencia de Seguros
+Campo XML: E801
+codigoPoliza	Si	Código de la póliza
+Campo XML: EA791
+numeroPoliza	Si	Número de la póliza
+Campo XML: EA794
+vigencia	Si	Descripción de la unidad de tiempo de vigencia
+Campo XML: EA792
+vigenciaUnidad	Si	Vigencia de la póliza
+Campo XML: EA793
+inicioVigencia	No	Fecha de inicio de vigencia
+Campo XML: EA795
+finVigencia	No	Fecha de fin de vigencia
+Campo XML: EA796
+codigoInternoItem	No	Código interno del ítem
+Campo XML: EA797
+Objeto data.sectorSupermercados
+Parámetro	Requerido	Descripción
+nombreCajero	No	Nombre del cajero
+Campo XML: E811
+efectivo	No	Efectivo
+Campo XML: E812
+vuelto	No	Vuelto
+Campo XML: E813
+donacion	No	Monto de la donación
+Campo XML: E814
+donacionDescripcion	No	Descripción de la donación
+Campo XML: E815
+Objeto data.sectorAdicional
+Parámetro	Requerido	Descripción
+ciclo	No	Ciclo
+Campo XML: E821
+inicioCiclo	No	Fecha de inicio de ciclo
+Campo XML: E822
+finCiclo	No	Fecha de fin de ciclo
+Campo XML: E823
+vencimientoPago	No	Fecha de vencimiento para el pago
+Campo XML: E824
+numeroContrato	No	Número de contrato E
+Campo XML: E825
+saldoAnterior	No	Saldo anterior
+Campo XML: E826
+Objeto data.transporte
+Parámetro	Requerido	Descripción
+tipo	No	Tipo de transporte. Obligatorio si tipoDocumento = 7.
+1= Propio
+2= Tercero
+Campo XML: E901
+modalidad	Si	Modalidad del transporte
+1=Terrestre
+2= Fluvial
+3= Aéreo
+4= Multimodal
+Campo XML: E903
+tipoResponsable	Si	Responsable del costo del flete
+1= Emisor de la Factura Electrónica
+2= Receptor de la Factura Electrónica
+3= Tercero
+4= Agente intermediario del transporte (cuando intervenga)
+5= Transporte propio
+Campo XML: E905
+condicionNegociacion	No	Condición de la negociación segun las opciones:
+
+CFR Costo y flete
+CIF Costo, seguro y flete
+CIP Transporte y seguro pagados hasta
+CPT Transporte pagado hasta
+DAP Entregada en lugar convenido
+DAT Entregada en terminal
+DDP Entregada derechos pagados
+EXW En fabrica
+FAS Franco al costado del buque
+FCA Franco transportista
+FOB Franco a bordo
+
+**Campo XML: **E906
+numeroManifiesto	No	Número de manifiesto o conocimiento de carga/declaración de tránsito aduanero/ Carta de porte internacional
+Campo XML: E907
+numeroDespachoImportacion	No	Número de despacho de importación
+Campo XML: E908
+inicioEstimadoTranslado	No	Fecha estimada de inicio de traslado
+Campo XML: E909
+finEstimadoTranslado	No	Fecha estimada de fin de traslado
+Campo XML: E910
+paisDestino	No	Código del país de destino
+Campo XML: E911
+paisDestinoNombre	No	Descripción del país de destino.
+Campo XML: E912
+salida	No	Campos que identifican el local de salida de las mercaderías.
+Obligatorio si tipoDocumento = 7.
+Ver detalle en tabla data.transporte.salida
+entrega	No	Campos que identifican el local de entrega de las mercaderías.
+Obligatorio si tipoDocumento = 7.
+Ver detalle en tabla data.transporte.entrega
+vehiculo	No	Campos que identifican el vehículo de traslado de mercaderías.
+Obligatorio si tipoDocumento = 7.
+Ver detalle en tabla data.transporte.vehiculo
+transportista	No	Campos que identifican al transportista.
+Obligatorio si tipoDocumento = 7.
+Ver detalle en tabla data.transporte.transportista
+Objeto data.transporte.salida
+Parámetro	Requerido	Descripción
+direccion	Si	Dirección del local de salida. Nombre de la calle principal
+Campo XML: E921
+numeroCasa	Si	Número de casa de salida
+Campo XML: E922
+complementoDireccion1	No	Complemento de dirección 1 salida. Nombre de la calle secundaria
+Campo XML: E923
+complementoDireccion2	No	Complemento de dirección 2 salida. Número de departamento/piso/ local/ edificio/ deposito del local de salida de la mercadería
+Campo XML: E924
+departamento	Si	Código del departamento del local de salida. Según XSD de Departamentos
+Campo XML: E925
+departamentoDescripcion	Si	Descripción del departamento del local de salida
+Campo XML: E926
+distrito	No	Código del distrito del local de salida
+Campo XML: E927
+distritoDescripcion	No	Descripción de distrito del local de salida
+Campo XML: E927
+ciudad	Si	Código de la ciudad del local de salida
+Campo XML: E929
+ciudadDescripcion	Si	Descripción de ciudad del local de salida
+Campo XML: E930
+pais	No	Código del país del local de salida
+paisDescripcion	No	Descripción del país del local de salida
+telefonoContacto	No	Teléfono de contacto del local de salida
+Campo XML: E931
+Objeto data.transporte.entrega
+Parámetro	Requerido	Descripción
+direccion	Si	Dirección del local de entrega. Nombre de la calle principal
+Campo XML: E941
+numeroCasa	Si	Número de casa de entrega
+Campo XML: E942
+complementoDireccion1	No	Complemento de dirección 1 entrega. Nombre de la calle secundaria
+Campo XML: E943
+complementoDireccion2	No	Complemento de dirección 2 salida. Número de departamento/piso/ local/ edificio/ deposito del local de salida de la mercadería
+Campo XML: E944
+departamento	Si	Código del departamento del local de entrega. Según XSD de Departamentos
+Campo XML: E945
+departamentoDescripcion	Si	Descripción del departamento del local de salida
+Campo XML: E946
+distrito	No	Código del distrito del local de entrega
+Campo XML: E947
+distritoDescripcion	No	Descripción de distrito del local de entrega
+Campo XML: E948
+ciudad	Si	Código de la ciudad del local de salida
+Campo XML: E949
+ciudadDescripcion	Si	Descripción de ciudad del local de salida
+Campo XML: E950
+pais	No	Código de pais de salida
+paisDescripcion	No	Descripcion del pais de salida
+telefonoContacto	No	Teléfono de contacto del local de la entrega
+Campo XML: E951
+Objeto data.transporte.vehiculo
+Parámetro	Requerido	Descripción
+tipo	Si	Tipo de vehículo. Ejemplo: Camioneta, Barcaza, Elicoptero.
+
+Debe ser acorde al atributo modalidad(E903)
+
+Campo XML: E961
+marca	Si	Marca
+Campo XML: E962
+documentoTipo	Si	Tipo de identificación del vehículo
+1=Número de identificación del vehículo
+2=Número de matrícula del vehículo
+Campo XML: E967
+documentoNumero	No	Número de identificación del vehículo. Debe informarse cuando el documentoTipo=1
+Campo XML: E963
+obs	No	Datos adicionales del vehículo
+Campo XML: E964
+numeroMatricula	No	Número de matrícula del vehículo. Debe informarse cuando el documentoTipo=2
+Campo XML: E965
+numeroVuelo	No	Número de vuelo
+Campo XML: E966
+Objeto data.transporte.transportista
+Parámetro	Requerido	Descripción
+contribuyente	Si	Naturaleza del transportista(true o false)
+Campo XML: E980
+nombre	Si	Nombre o razón social del transportista
+Campo XML: E982
+ruc	Si	RUC del transportista
+Campo XML: E983
+documentoTipo	No	Tipo de documento de identidad del transportista
+Obligatorio si contribuyente=false
+
+Valores:
+1=Cédula paraguaya
+2=Pasaporte
+3=Cédula extranjera
+4=Carnet de residencia
+
+Campo XML: E985
+documentoNumero	No	Número de documento de identidad del transportista. Obligatorio si existe el campo documentoTipo
+Campo XML: E987
+direccion	Si	Domicilio fiscal del transportista
+Campo XML: E992
+obs	No	Observacion del transportista
+pais	No	Código del pais de Origen del transportista
+paisDescripcion	No	Descripcion del pais Origen
+chofer	Si	Campos que identifican al chofer. Ver detalle en tabla data.transporte.transportista.chofer
+agente	No	Campos que identifican al agente. Ver detalle en tabla data.transporte.transportista.agente
+Objeto data.transporte.transportista.chofer
+Parámetro	Requerido	Descripción
+documentoNumero	Si	Número de documento de identidad del chofer
+Campo XML: E990
+nombre	Si	Nombre y apellido del chofer
+Campo XML: E991
+direccion	Si	Dirección del chofer
+Campo XML: E993
+Objeto data.transporte.transportista.agente
+Parámetro	Requerido	Descripción
+nombre	No	Nombre o razón social del agente. Casos particulares según RG N°41/14
+Campo XML: E994
+ruc	No	RUC del agente
+Campo XML: E995
+direccion	No	Dirección del agente
+Campo XML: E997
+Objeto data.complementarios
+Parámetro	Requerido	Descripción
+ordenCompra	No	Número de orden de compra
+Campo XML: G002
+ordenVenta	No	Número de orden de venta
+Campo XML: G003
+numeroAsiento	No	Número de asiento contable
+Campo XML: G004
+carga	No	Campos generales de la carga
+Objeto data.complementarios.carga
+Parámetro	Requerido	Descripción
+unidadMedidaVolumenTotal	No	Unidad de medida del total de volumen de la mercadería
+Campo XML: G051
+volumenTotal	No	Volumen total de la mercadería
+Campo XML: G053
+unidadMedidaPesoTotal	No	Unidad de medida del peso total de la mercadería
+Campo XML: G054
+pesoTotal	No	Peso total de la mercadería
+Campo XML: G056
+caracteristicaCarga	No	1 – Mercaderías con cadena de frío
+2 – Carga peligrosa
+3 – Otro de características similares (especificar)
+Obligatorio cuando lo exige la RG 41/14
+Campo XML: G057
+caracteristicaCargaDescripcion	No	Descripcion de la caracteristica de carga
+Solo especificar cuando caracteristicaCarga = 3
+Campo XML: G058
+Objeto data.documentoAsociado
+Objeto ({}) o Array de objetos [{}] que relacionan los documentos asociados al DE.
+
+Parámetro	Requerido	Descripción
+formato	Si	Tipo de documento asociado
+1= Electrónico
+2= Impreso
+3= Constancia Electrónica
+Campo XML: H002
+cdc	No	CDC del DTE referenciado
+Campo XML: H004
+tipoDocumentoImpreso	Si	Tipo de documento impreso:
+1= Factura
+2= Nota de crédito
+3= Nota de débito
+4= Nota de remisión
+5= Comprobante de retención
+
+Campo XML: H009
+timbrado	Si	Nro. timbrado documento impreso de referencia
+Campo XML: H005
+establecimiento	Si	Establecimiento
+Campo XML: H005
+punto	Si	Punto de expedición
+Campo XML: H007
+numero	Si	Número del documento
+Campo XML: H008
+fecha	Si	Fecha de emisión del documento impreso de referencia. Obligatorio si existe el campo establecimiento.
+Formato AAAA-MM-DD
+No Informar si campo establecimiento no existe
+Campo XML: H011
+numeroRetencion	No	Número de comprobante de retención
+Campo XML: H012
+resolucionCreditoFiscal	No	Número de resolución de crédito fiscal
+Campo XML: H013
+constanciaTipo	No	Tipo de constancia
+Campo XML: H014
+constanciaNumero	No	Numero de constancia
+Campo XML: H016
+constanciaControl	No	Código de Control de la constancia
+Campo XML: H017
+rucFusionado	No	Cuando el formato es 1-Electrónico y el CDC del Documento Referenciado es de un Receptor fusionado, entonces especificar el RUC de la Empresa fusionada, sin el DV
+Campo XML: H018 (NT. 23)
+Te sirvió la documentación?
+   
+   
+ 
+Comparte este artículo:
+Facebook
+X
+LinkedIn
+¿Sigues con problemas? ¿Cómo podemos ayudar?
+Updated on 12 de diciembre de 2025
+Crear un documento electrónico
+SIFEN – Consulta DTE por CDC
+ 
+logo
+FacturaSend es una Plataforma Paraguaya que facilita la generación de los Documentos Electrónicos exigidos por el SIFEN gracias a su fácil integración con sistemas nacionales e internacionales utilizados en el mercado.
+
+tips@tips.com.py
+
+Nosotros
+TIPS S.A.
+Partner's & Aliados
+Producto
+API Docs
+Recursos
+Brochure PDF Empresas
+Brochure PDF Integradores
+Copyright © 2021 - FacturaSend. Todos los derechos Reservados.
+
+  
