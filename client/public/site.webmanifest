@@ -1,0 +1,15 @@
+
+{
+  "name": "SoftwarePar",
+  "short_name": "SoftwarePar",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#1a4d7a",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
